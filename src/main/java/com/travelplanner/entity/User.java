@@ -1,5 +1,6 @@
 package com.travelplanner.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,9 +14,13 @@ public class User {
     private int user_id;
     
     private String user_name;
+
+    @Column(length = 250)
     private String user_address;
     private String user_city;
     private int user_city_pincode;
+
+    @Column(length = 11)
     private String user_phone;
     private String user_email;
     private String user_photo;

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <button type="button" class="btn btn-primary"><a href="/userRegistration" class="text-white">Register here</a></button>
+    <h1>User Name: <% user.user_name %> </h1>
 
 <%@ include file="/view/include/footerc.jsp" %>
 </body>
