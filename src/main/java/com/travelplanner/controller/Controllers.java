@@ -9,16 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.travelplanner.entity.User;
 import com.travelplanner.service.UserService;
-// import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -46,8 +43,9 @@ public class Controllers {
 	@RequestMapping(method = RequestMethod.POST)
     public String createUser(@ModelAttribute("User") User user, Model model) {
         User u = userService.createUser(user);
+        model.addAttribute("msg", "Registration Successfull");
         System.out.println(u);
-        return "userDashboard";
+        return "login";
     }
 
 	@PutMapping("/{id}")

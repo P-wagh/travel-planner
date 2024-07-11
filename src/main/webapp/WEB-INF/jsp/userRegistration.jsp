@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <%@ include file="/view/include/navbarc.jsp" %>
+    <%@ include file="/WEB-INF/view/include/navbarc.jsp" %>
         <%@page isELIgnored="false" %>
 
 
@@ -77,7 +77,7 @@
 
 
 
-                <%@ include file="/view/include/footerc.jsp" %>
+                <%@ include file="/WEB-INF/view/include/footerc.jsp" %>
             </body>
 
             </html>

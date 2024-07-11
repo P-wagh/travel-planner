@@ -15,5 +15,10 @@ public class HomeController {
     public String userRegistration(){
         return "userRegistration";
     }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
     
 }
