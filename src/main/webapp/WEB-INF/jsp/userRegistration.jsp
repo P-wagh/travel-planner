@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <%@ include file="/WEB-INF/view/include/navbarc.jsp" %>
+    <%@ include file="/WEB-INF/jsp/include/navbarc.jsp" %>
         <%@page isELIgnored="false" %>
 
 
@@ -13,7 +13,7 @@
                 <title>User Registration Form</title>
             </head>
 
-            <body>
+            <body style="background-color: aliceblue;">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
@@ -77,7 +77,7 @@
 
 
 
-                <%@ include file="/WEB-INF/view/include/footerc.jsp" %>
+                <%@ include file="/WEB-INF/jsp/include/footerc.jsp" %>
             </body>
 
             </html>

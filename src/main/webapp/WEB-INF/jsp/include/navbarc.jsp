@@ -13,8 +13,8 @@
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
                 <div style="width: 30px; height: 30px;">
-                    <svg class="mb-1 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polygon points="72 56 8 200 136 200 72 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="136 200 248 200 184 56 72 56 72 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-                    <Strong class="text-white">EXPLORATION</Strong>
+                    <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polygon points="72 56 8 200 136 200 72 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="136 200 248 200 184 56 72 56 72 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                    <Strong class="">EXPLORATION</Strong>
                 </div>
                 </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

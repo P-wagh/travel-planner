@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ include file="/view/include/navbarc.jsp" %>
+    <%@ include file="/WEB-INF/jsp/include/navbarc.jsp" %>
 <!-- <%@page isELIgnored="false" %> -->
 
 <!DOCTYPE html>
@@ -12,9 +12,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: aliceblue;
         }
-        .form-container {
+        /* .form-container {
             margin-top: 100px;
             padding: 30px;
             border-radius: 10px;
@@ -28,11 +28,11 @@
         .btn-primary:hover {
             background-color: #7CB342;
             border-color: #7CB342;
-        }
+        } */
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container my-5">
         <%
             String msg = (String)request.getAttribute("msg");
 
