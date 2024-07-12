@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.travelplanner.repository.UserRepository;
@@ -15,13 +16,26 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    // @Autowired
+    // private BCryptPasswordEncoder passwordEncoder;
+
     public List<User> getAllUsers(){
-        return userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
     public Optional<User> getUserById(int id){
         return userRepository.findById(id);
     }
+
+    public User getUserByuser_emailAndUser_password(String email, String password){
+
+        return userRepository.findByuser_emailAnduser_password(email, password);
+    }
+
+    // public void save(User user){
+    //     user.setUser_password(passwordEncoder.encode(user.getUser_password()));
+    //     userRepository.save(user);
+    // }
 
     public User createUser(User user){
         return userRepository.save(user);

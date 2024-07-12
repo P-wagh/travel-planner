@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.travelplanner.entity.User;
 import com.travelplanner.service.UserService;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
+//import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -46,6 +45,13 @@ public class Controllers {
         model.addAttribute("msg", "Registration Successfull");
         System.out.println(u);
         return "login";
+    }
+    
+    @GetMapping("/{user_email},{user_password}")
+    public String getUserByuser_email(@PathVariable String user_email,@PathVariable String user_password, Model model){
+        User u = userService.getUserByuser_emailAndUser_password(user_email, user_password);
+        System.out.println(u);
+        return "/userDashboard";
     }
 
 	@PutMapping("/{id}")

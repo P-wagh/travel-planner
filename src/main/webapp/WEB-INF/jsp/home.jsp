@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Travel planner</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css ">
 </head>
 <body>
@@ -27,7 +27,9 @@
         <div class="d-flex justify-content-sm-center flex-column ">
           <p class="lead fw-bold mx-auto">You can trust us with your vacation</p>
           <div class="d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-dark btn-lg px-4 gap-3"><a href="/userRegistration" class="text-white">Register here</a></button>
+            <form action="/userRegistration" class="d-flex">
+              <button class="btn btn-outline-dark mx-2" type="submit">Explore Now</button>
+            </form>
           </div>
         </div>
         </div>
