@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page import= "com.travelplanner.helper.Massege, jakarta.servlet.http.HttpSession" %>
+<%
+	Massege msg = (Massege) session.getAttribute("msg");
+%>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -63,23 +67,31 @@
         </nav>
         <!-- nav bar end -->
         <div class="container d-flex justify-content-end">
-            <% String msg=(String)request.getAttribute("msg"); %>
                 <div class="justify-content-center rounded-4 p-5 mt-5 logincontainer">
                     <div class="">
                         <div class="form-container my-3">
                             <h2 class="text-center">User Login</h2>
-                            <p>
-                                <%= msg %>
-                            </p>
+                            <%
+                            	if(msg != null){
+                            		 
+                         
+                            %>
+                            <div class="alert alert-<%= msg.getType() %>" role="alert">
+			                    <%= msg.getDiscription() %>
+			                </div>
+                            <%
+                            		session.removeAttribute("msg");
+                            	}
+                            %>
+                            
                             <form action="">
                                 <div class="form-group">
                                     <label for="user_email">Email</label>
-                                    <input type="email" class="form-control" id="user_email" name="user_email" required placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="user_email" name="user_email" required placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="user_password">Password</label>
-                                    <input type="password" class="form-control" id="user_password" name="user_password"
-                                        required placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="user_password" name="user_password" required placeholder="Password">
                                 </div>
                                 <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
                             </form>

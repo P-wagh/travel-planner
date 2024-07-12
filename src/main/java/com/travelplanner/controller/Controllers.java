@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.travelplanner.entity.User;
+import com.travelplanner.helper.Massege;
 import com.travelplanner.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,10 +44,21 @@ public class Controllers {
     }    
 
 	@RequestMapping(method = RequestMethod.POST)
-    public String createUser(@ModelAttribute("User") User user, Model model) {
-        User u = userService.createUser(user);
-        model.addAttribute("msg", "Registration Successfull");
-        System.out.println(u);
+    public String createUser(@ModelAttribute("User") User user, Model model, HttpSession session) {
+        try {
+            User u = userService.createUser(user);
+
+            model.addAttribute("user", user);
+            
+            Massege msg = new Massege("Registrstion Succesfull.", "success");
+            session.setAttribute("msg", msg);
+            System.out.println(u);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Massege msg = new Massege("Error: Registration faild", "danger");
+            session.setAttribute("msg", msg);
+            return "userRegistration";
+        }
         return "login";
     }
     
