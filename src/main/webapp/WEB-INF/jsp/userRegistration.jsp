@@ -3,7 +3,7 @@
 <%
 	Massege msg = (Massege) session.getAttribute("msg");
 %>
-    <!-- <%@ include file="/WEB-INF/jsp/include/navbarc.jsp" %> -->
+
         <%@page isELIgnored="false" %>
 
 
@@ -151,7 +151,7 @@
 
 
 
-                <!-- <%@ include file="/WEB-INF/jsp/include/footerc.jsp" %> -->
+             
                  <!-- Footer start -->
                  <footer class="py-3 my-4">
                     <ul class="nav justify-content-center border-bottom pb-3 mb-3">

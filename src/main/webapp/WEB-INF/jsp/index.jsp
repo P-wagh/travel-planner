@@ -13,7 +13,6 @@
   <body>
     <div>
       <!-- Navbar file -->
-      <!-- <%@ include file="/WEB-INF/jsp/include/navbarc.jsp" %>  -->
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -97,8 +96,7 @@
     <!-- Hero section end -->
 
 
-    <!-- incerting footer file -->
-    <!-- <%@ include file="/WEB-INF/jsp/include/footerc.jsp" %>   -->
+  
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 
