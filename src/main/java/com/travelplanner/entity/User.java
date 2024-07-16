@@ -24,6 +24,7 @@ public class User {
     private String user_phone;
     private String user_email;
     private String user_photo;
+    private String userRole;
     private String user_password;
 
 
@@ -34,7 +35,7 @@ public class User {
 
     // Parameterise Constructor
     public User(int user_id, String user_name, String user_address, String user_city, int user_city_pincode,
-            String user_phone, String user_email, String user_photo, String user_password) {
+            String user_phone, String user_email, String user_photo, String userRole, String user_password) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.user_address = user_address;
@@ -43,11 +44,22 @@ public class User {
         this.user_phone = user_phone;
         this.user_email = user_email;
         this.user_photo = user_photo;
+        this.userRole = userRole;
         this.user_password = user_password;
     }
 
 
     // Geters and Seters
+    public String getUserRole() {
+        return userRole;
+    }
+
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+
     public void setUser_password(String user_password) {
         this.user_password = user_password;
     }

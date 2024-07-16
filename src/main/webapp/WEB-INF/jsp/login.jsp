@@ -84,17 +84,17 @@
                             	}
                             %>
                             
-                            <form action="">
-                                <div class="form-group">
-                                    <label for="user_email">Email</label>
-                                    <input type="email" class="form-control" id="user_email" name="user_email" required placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="user_password">Password</label>
-                                    <input type="password" class="form-control" id="user_password" name="user_password" required placeholder="Password">
-                                </div>
-                                <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
-                            </form>
+                            <form action="/login" method="post">
+			                    <div class="form-group">
+			                        <label for="username">Email</label>
+			                        <input type="email" class="form-control" id="username" name="username" placeholder="Enter your email" required>
+			                    </div>
+			                    <div class="form-group">
+			                        <label for="password">Password</label>
+			                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+			                    </div>
+			                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+			                </form>
                         </div>
                     </div>
                 </div>

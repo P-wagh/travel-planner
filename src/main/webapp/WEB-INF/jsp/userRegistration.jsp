@@ -3,7 +3,7 @@
 <%
 	Massege msg = (Massege) session.getAttribute("msg");
 %>
-    <%@ include file="/WEB-INF/jsp/include/navbarc.jsp" %>
+    <!-- <%@ include file="/WEB-INF/jsp/include/navbarc.jsp" %> -->
         <%@page isELIgnored="false" %>
 
 
@@ -16,6 +16,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>User Registration Form</title>
                 <!-- <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css "> -->
+                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
                 <style>
                     .registrationForm{
                         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -25,6 +26,50 @@
             </head>
 
             <body style="background-color: aliceblue;">
+                <!-- Navbar starting -->
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="#">
+                        <div style="width: 30px; height: 30px;">
+                            <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polygon points="72 56 8 200 136 200 72 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="136 200 248 200 184 56 72 56 72 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                            <Strong class="">EXPLORATION</Strong>
+                        </div>
+                        </a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Activity</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                          </li>
+                          
+                        </ul>
+        
+                        <form action="/login" class="d-flex">
+                          <button class="btn btn-outline-dark mx-2" type="submit">Login</button>
+                        </form>
+                        <form action="/userRegistration" class="d-flex">
+                          <button class="btn btn-outline-dark mx-2" type="submit">Register</button>
+                        </form>
+        
+                      </div>
+                    </div>
+                  </nav>
+
+                <!-- Navbar end -->
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8 p-5 registrationForm">
@@ -49,7 +94,7 @@
 
                                 <h2 class="text-center mt-3">User Registration</h2>
                                 <!-- <p class="text-center">Home for the traveller</p> -->
-                                <form action="/users" method="post">
+                                <form action="/do_register" method="post">
                                     <div class="form-group my-2">
                                         <label for="user_name">User Name</label>
                                         <input type="text" class="form-control" id="user_name" name="user_name"
@@ -106,7 +151,23 @@
 
 
 
-                <%@ include file="/WEB-INF/jsp/include/footerc.jsp" %>
+                <!-- <%@ include file="/WEB-INF/jsp/include/footerc.jsp" %> -->
+                 <!-- Footer start -->
+                 <footer class="py-3 my-4">
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Activity</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About Us</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+                    </ul>
+                    <p class="text-center text-body-secondary">© 2024 Travel-Planner</p>
+                  </footer>
+                 <!-- Footer end -->
+
+
+                 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
             </body>
 
             </html>
