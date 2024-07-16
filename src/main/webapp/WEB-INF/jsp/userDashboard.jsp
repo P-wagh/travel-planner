@@ -79,10 +79,91 @@
             </nav>
 
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <div class="d-flex flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
-                    <a class="btn btn-outline-dark mb-2" href="/logout">Logout</a>
+                    <div class="d-flex ms-auto">
+
+                        <div class="flex-shrink-0 dropdown mb-2">
+                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              <img src="<%= request.getContextPath() %>/images/default.png" alt="mdo" width="32px" height="32px" class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small shadow" style="">
+                              <li><a class="dropdown-item" href="#">New project...</a></li>
+                              <li><a class="dropdown-item" href="#">Settings</a></li>
+                              <!-- link trigger modal -->
+                              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profile">Profile</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                            </ul>
+                          </div>
+                          
+                    </div>
                 </div>
+
+                <!-- Model Starting  -->             
+                <!-- Modal -->
+                <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Exploration</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="profilePhoto d-flex justify-content-center">
+                            <img src="<%= request.getContextPath() %>/images/<%= user.getUser_photo() %>" alt="" width="125px" height="125px" class="rounded-circle">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <strong class="fs-4"><%= user.getUser_name() %></strong>
+                        </div>
+                        <hr>
+
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                <th scope="row">User Id </th>
+                                <td>:</td>
+                                <td><%= user.getUser_id() %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Address </th>
+                                <td>:</td>
+                                <td><%= user.getUser_address() %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">City </th>
+                                <td>:</td>
+                                <td><%= user.getUser_city() %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">City Pincode </th>
+                                <td>:</td>
+                                <td><%= user.getUser_city_pincode() %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Phone no</th>
+                                <td>:</td>
+                                <td><%= user.getUser_phone() %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Email </th>
+                                <td>:</td>
+                                <td><%= user.getUser_email() %></td>
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Model end -->
                 
                 <div class="row">
                     <div class="col-md-4">

@@ -70,7 +70,7 @@
                   </nav>
 
                 <!-- Navbar end -->
-                <div class="container">
+                <div class="container my-4">
                     <div class="row justify-content-center">
                         <div class="col-md-8 p-5 registrationForm">
                             <div class="form-container">
@@ -92,7 +92,7 @@
 	                            %>
 
 
-                                <h2 class="text-center mt-3">User Registration</h2>
+                                <h2 class="text-center my-4">User Registration</h2>
                                 <!-- <p class="text-center">Home for the traveller</p> -->
                                 <form action="/do_register" method="post">
                                     <div class="form-group my-2">
