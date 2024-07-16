@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import= "com.travelplanner.entity.User, jakarta.servlet.http.HttpSession" %>
+<%
+	
+	User user = (User) session.getAttribute("user");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,9 +87,9 @@
                     <div class="col-md-4">
                         <div class="user-info">
                             <h4>User Information</h4>
-                            <p><strong>Name:</strong> John Doe</p>
-                            <p><strong>Email:</strong> john.doe@example.com</p>
-                            <p><strong>City:</strong> New York</p>
+                            <p><strong>Name:</strong> <%= user.getUser_name() %></p>
+                            <p><strong>Email:</strong> <%= user.getUser_email() %></p>
+                            <p><strong>City:</strong> <%= user.getUser_city() %></p>
                         </div>
                     </div>
                     <div class="col-md-8">

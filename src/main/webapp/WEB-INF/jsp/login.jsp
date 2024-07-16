@@ -23,24 +23,17 @@
                 margin-top: 10% !important;
             }
 
-            /* body {
-            background-color: aliceblue;
-        } */
-            /* .form-container {
-            margin-top: 100px;
-            padding: 30px;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary {
-            background-color: #8BC34A;
-            border-color: #8BC34A;
-        }
-        .btn-primary:hover {
-            background-color: #7CB342;
-            border-color: #7CB342;
-        } */
+            .transparent-input {
+                background-color: rgba(255, 255, 255, 0); /* Adjust the alpha value for transparency */
+                border: 1px solid #000000;
+                border-radius: 5px;
+                padding: 10px;
+                color: #333;
+            }
+
+            .transparent-input::placeholder {
+                color: #3d3b3b; /* Placeholder color */
+            }
         </style>
     </head>
 
@@ -67,9 +60,12 @@
         </nav>
         <!-- nav bar end -->
         <div class="container d-flex justify-content-end">
-                <div class="justify-content-center rounded-4 p-5 mt-5 logincontainer">
+                <div class="justify-content-center rounded-4 p-5 mt-4 logincontainer">
                     <div class="">
                         <div class="form-container my-3">
+                            <div class="d-flex justify-content-center mb-2">
+                                <svg width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                            </div>
                             <h2 class="text-center">User Login</h2>
                             <%
                             	if(msg != null){
@@ -87,13 +83,13 @@
                             <form action="/login" method="post">
 			                    <div class="form-group">
 			                        <label for="username">Email</label>
-			                        <input type="email" class="form-control" id="username" name="username" placeholder="Enter your email" required>
+			                        <input type="email" class="form-control transparent-input" id="username" name="username" placeholder="Enter your email" required>
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="password">Password</label>
-			                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+			                        <input type="password" class="form-control transparent-input" id="password" name="password" placeholder="Enter your password" required>
 			                    </div>
-			                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+			                    <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
 			                </form>
                         </div>
                     </div>
