@@ -5,10 +5,10 @@ public class Massege {
 	private String discription;
 	private String type;
 	
-	public Massege() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	// public Massege() {
+	// 	super();
+	// 	// TODO Auto-generated constructor stub
+	// }
 	public Massege(String discription, String type) {
 		super();
 		this.discription = discription;

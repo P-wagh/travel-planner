@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +41,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUser(int id, User userDetaails){
+    public User updateUser1(int id, User userDetaails){
 
         User user = new User();
         user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
@@ -58,4 +60,19 @@ public class UserService {
     public void deleteUser(int id){
         userRepository.deleteById(id);
     }
+
+    //Upate user profile
+    public User getCurrentUser(){
+        String email = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        return userRepository.findByUser_email(email);
+    }
+
+    public void updateUser(User user, String newPassword){
+        if (newPassword != null && !newPassword.isEmpty()) {
+            user.setUser_password(passwordEncoder.encode(newPassword));
+        }
+
+        userRepository.save(user);
+    }
+    // Updaye user profile end
 }

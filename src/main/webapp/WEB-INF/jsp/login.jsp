@@ -35,7 +35,7 @@
                 color: #3d3b3b; /* Placeholder color */
             }
             .mt-4{
-                margin-top: 70px !important;
+                margin-top: 50px !important;
             }
         </style>
     </head>
@@ -95,7 +95,10 @@
 			                    <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
 
                                 <div class="d-flex justify-content-center mt-3">
-                                    <a class="" href="/home"><u>Go to Home</u> </a>
+                                    <a class="" href="/home"><u>Home</u> </a>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <a class="" href="/userRegistration"><u>Do not have an account</u> </a>
                                 </div>
 			                </form>
                         </div>

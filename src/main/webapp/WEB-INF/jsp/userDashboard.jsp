@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import= "com.travelplanner.entity.User, jakarta.servlet.http.HttpSession" %>
+<%@ page import= "com.travelplanner.entity.User, com.travelplanner.helper.Massege, jakarta.servlet.http.HttpSession" %>
 <%
 	
 	User user = (User) session.getAttribute("user");
+    Massege msg = (Massege) session.getAttribute("msg");
 
 %>
 <!DOCTYPE html>
@@ -41,6 +42,9 @@
         }
         .card {
             margin-bottom: 1.5rem;
+        }
+        .profilepicture{
+            object-fit: cover;
         }
     </style>
 
@@ -81,13 +85,14 @@
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
                 <div class="d-flex flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
-                    <div class="d-flex ms-auto">
+                    <a href="/logout" class="btn btn-outline-dark mx-3 ms-auto mb-2">Logout</a>
 
+                    <div class="d-flex ">
                         <div class="flex-shrink-0 dropdown mb-2">
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                              <img src="<%= request.getContextPath() %>/images/default.png" alt="mdo" width="32px" height="32px" class="rounded-circle">
+                              <img src="<%= request.getContextPath() %>/images/profiles/<%= user.getUser_photo() %>" alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
-                            <ul class="dropdown-menu text-small shadow" style="">
+                            <ul class="dropdown-menu text-small shadow">
                               <li><a class="dropdown-item" href="#">New project...</a></li>
                               <li><a class="dropdown-item" href="#">Settings</a></li>
                               <!-- link trigger modal -->
@@ -95,8 +100,7 @@
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="/logout">Sign out</a></li>
                             </ul>
-                          </div>
-                          
+                          </div> 
                     </div>
                 </div>
 
@@ -111,59 +115,125 @@
                         </div>
                         <div class="modal-body">
                         <div class="profilePhoto d-flex justify-content-center">
-                            <img src="<%= request.getContextPath() %>/images/<%= user.getUser_photo() %>" alt="" width="125px" height="125px" class="rounded-circle">
+                            <img src="<%= request.getContextPath() %>/images/profiles/<%= user.getUser_photo() %>" alt="" width="125px" height="125px" class="rounded-circle profilepicture">
                         </div>
                         <div class="d-flex justify-content-center">
                             <strong class="fs-4"><%= user.getUser_name() %></strong>
                         </div>
                         <hr>
 
-                        <table class="table">
-                            <tbody>
-                              <tr>
-                                <th scope="row">User Id </th>
-                                <td>:</td>
-                                <td><%= user.getUser_id() %></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">Address </th>
-                                <td>:</td>
-                                <td><%= user.getUser_address() %></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">City </th>
-                                <td>:</td>
-                                <td><%= user.getUser_city() %></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">City Pincode </th>
-                                <td>:</td>
-                                <td><%= user.getUser_city_pincode() %></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">Phone no</th>
-                                <td>:</td>
-                                <td><%= user.getUser_phone() %></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">Email </th>
-                                <td>:</td>
-                                <td><%= user.getUser_email() %></td>
-                              </tr>
-                              
-                            </tbody>
-                          </table>
+                        <div id="showProfile">
+                            <table class="table">
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">User Id </th>
+                                    <td>:</td>
+                                    <td><%= user.getUser_id() %></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Address </th>
+                                    <td>:</td>
+                                    <td><%= user.getUser_address() %></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">City </th>
+                                    <td>:</td>
+                                    <td><%= user.getUser_city() %></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">City Pincode </th>
+                                    <td>:</td>
+                                    <td><%= user.getUser_city_pincode() %></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Phone no</th>
+                                    <td>:</td>
+                                    <td><%= user.getUser_phone() %></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Email </th>
+                                    <td>:</td>
+                                    <td><%= user.getUser_email() %></td>
+                                  </tr>
+                                  
+                                </tbody>
+                              </table>
+                        </div>
+
+                        <div id="editProfile" style="display: none;">
+                            <form action="/user/updateprofile" method="post" enctype="multipart/form-data">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+											<td>Profile picture:</td>
+											<td><input type="file" class="form-control" name="profileimage"></td>
+										</tr>      
+                                      <tr>
+                                        <th scope="row">User Id: </th>
+                                        <td><%= user.getUser_id() %> <input type="hidden" name="user_id" value="<%= user.getUser_id() %>" id=""></td>
+
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Name: </th>
+                                        <td><input type="text" class="form-control" name="user_name" id="" value="<%= user.getUser_name() %>"></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Address: </th>
+                                        <td><input type="text" class="form-control" name="user_address" value="<%= user.getUser_address() %>"></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">City: </th>
+                                        <td><input type="text" class="form-control" name="user_city" value=" <%= user.getUser_city() %> " > </td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">City Pincode: </th>
+                                        <td><input type="text" class="form-control" name="user_city_pincode" id="" value="<%= user.getUser_city_pincode() %>"></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Phone no:</th>
+                                        <td><input type="text" class="form-control" name="user_phone" id="" value="<%= user.getUser_phone() %>"></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Email: </th>
+                                        <td><input type="text" name="user_email" class="form-control" id="" value="<%= user.getUser_email() %>"></td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">role: </th>
+                                        <td><%= user.getUserRole() %><input type="hidden" name="userRole" class="form-control" id="" value="<%= user.getUserRole() %>"></td>
+                                      </tr>
+                                      <!-- <tr>
+                                        <th scope="row">Password: </th>
+                                        <td><input type="text" name="user_password" class="form-control" id="" value="<%= user.getUser_password() %>"></td>
+                                      </tr> -->
+                                      
+                                    </tbody>
+                                  </table>
+                                  <button type="submit" class="btn btn-outline-dark">Save Changes</button>
+                            </form>
+                        </div>
 
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-outline-dark" id="edit-profile">Update Profile</button>
                         </div>
                     </div>
                     </div>
                 </div>
 
                 <!-- Model end -->
+                <%
+                if(msg != null){
+                     
+         
+                %>
+                <div class="alert alert-<%= msg.getType() %>" role="alert">
+                    <%= msg.getDiscription() %>
+                </div>
+                <%
+                session.removeAttribute("msg");
+                    }
+                %>
                 
                 <div class="row">
                     <div class="col-md-4">
@@ -206,5 +276,34 @@
 	
 	
 	<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>	
+
+    <!-- jQuery (User to define = '$' if not add jQuery they it give error) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Script for edit profile -->
+    <script type="text/javascript">
+		$(document).ready(function() {
+			let editStatus = false;
+			$("#edit-profile").click(function() {
+
+				if (editStatus == false) {
+					$("#showProfile").hide();
+					$("#editProfile").show();
+
+					editStatus = true;
+
+					$(this).text("Back");
+				} else {
+					$("#showProfile").show();
+					$("#editProfile").hide();
+
+					editStatus = false;
+
+					$(this).text("Edit");
+				}
+			})
+		});
+	</script>
+    
 </body>
 </html>
