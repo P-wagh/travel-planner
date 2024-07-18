@@ -43,8 +43,21 @@
         .card {
             margin-bottom: 1.5rem;
         }
+
+        /* For profile ficture to cover all space in div */
         .profilepicture{
             object-fit: cover;
+        }
+
+        /* For drop down */
+        .dropdown-submenu {
+        position: relative;
+        }
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: -100%;
+            margin-top: 0;
+            margin-left: 0;
         }
     </style>
 
@@ -94,7 +107,17 @@
                             </a>
                             <ul class="dropdown-menu text-small shadow">
                               <li><a class="dropdown-item" href="#">New project...</a></li>
-                              <li><a class="dropdown-item" href="#">Settings</a></li>
+                              
+                              <!-- Dropdown submenu -->
+                              <div class="dropdown-submenu dropstart">
+                                <a class="dropdown-item dropdown-toggle" href="#">Settings</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Change Password</a>
+                                    <a class="dropdown-item text-danger" href="#" onclick="deleteUser( '<%= user.getUser_id() %>' )">Delete Account</a>
+                                </div>
+                            </div>
+                              
+                              
                               <!-- link trigger modal -->
                               <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profile">Profile</a></li>
                               <li><hr class="dropdown-divider"></li>
@@ -280,6 +303,9 @@
     <!-- jQuery (User to define = '$' if not add jQuery they it give error) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
+    <!-- Sweet alert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Script for edit profile -->
     <script type="text/javascript">
 		$(document).ready(function() {
@@ -303,6 +329,76 @@
 				}
 			})
 		});
+
+
+        // Script for the drop down menu
+        $('.dropdown-submenu a.dropdown-toggle').on("click", function(e) {
+            var $subMenu = $(this).next(".dropdown-menu");
+            if (!$subMenu.hasClass('show')) {
+                $subMenu.parents('.dropdown-menu').first().find('.show').removeClass("show");
+            }
+            $subMenu.toggleClass('show');
+            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+                $('.dropdown-submenu .show').removeClass("show");
+            });
+            return false;
+        });
+
+		
+        
+        function deleteUser(uid){
+            // Swal.fire({
+            //     title: "Are you sure?",
+            //     text: "You won't to delete your Account.!",
+            //     icon: "warning",
+            //     showCancelButton: true,
+            //     confirmButtonColor: "#3085d6",
+            //     cancelButtonColor: "#d33",
+            //     confirmButtonText: "Yes, delete it!"
+            // }).then((result) => {
+            //     if (result.isConfirmed) {
+            //     window.location = "/user/delete/" + uid;
+            //     Swal.fire({
+            //         title: "Deleted!",
+            //         text: "Your file has been deleted.",
+            //         icon: "success"
+            //     });
+            //     }else{
+            //         Swal("Your profile is safe.");
+            //     }
+            // });
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch('/user/delete/' + uid, {
+                        method: 'DELETE',
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire("Deleted!", "Your account has been deleted.", "success").then(() => {
+                                // Redirect to a suitable page after deletion
+                                window.location = '/home';
+                            });
+                        } else {
+                            Swal.fire("Error!", "There was a problem deleting your account.", "error");
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire("Error!", "There was a problem deleting your account.", "error");
+                    });
+                } else {
+                    Swal.fire("Cancelled", "Your profile is safe.", "info");
+                }
+            });
+        }
 	</script>
     
 </body>

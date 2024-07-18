@@ -27,7 +27,8 @@
 
             <body style="background-color: aliceblue;">
                 <!-- Navbar starting -->
-                <nav class="navbar navbar-expand-lg">
+                <!-- <nav class="navbar navbar-expand-lg"> -->
+                <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
                     <div class="container-fluid">
                       <a class="navbar-brand" href="#">
                         <div style="width: 30px; height: 30px;">
@@ -59,10 +60,10 @@
                         </ul>
         
                         <form action="/login" class="d-flex">
-                          <button class="btn btn-outline-dark mx-2" type="submit">Login</button>
+                          <button class="btn btn-outline-light mx-2" type="submit">Login</button>
                         </form>
                         <form action="/userRegistration" class="d-flex">
-                          <button class="btn btn-outline-dark mx-2" type="submit">Register</button>
+                          <button class="btn btn-outline-light mx-2" type="submit">Register</button>
                         </form>
         
                       </div>
@@ -140,6 +141,7 @@
                                             name="confirm_password" required>
                                     </div>
                                     <button type="submit" class="btn btn-outline-dark btn-block">Register</button>
+                                    <Button type="reset" class="btn btn-outline-dark ms-1">Reset</Button>
                                 </form>
                             </div>
                         </div>
