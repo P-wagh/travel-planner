@@ -1,6 +1,6 @@
 package com.travelplanner.service;
 
-import java.util.List;
+// import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public List<User> getAllUsers(){
-        return (List<User>) userRepository.findAll();
-    }
+    // public List<User> getAllUsers(){
+    //     return (List<User>) userRepository.findAll();
+    // }
 
     public Optional<User> getUserById(int id){
         return userRepository.findById(id);

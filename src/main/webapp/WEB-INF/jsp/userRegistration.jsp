@@ -32,8 +32,18 @@
                     <div class="container-fluid">
                       <a class="navbar-brand" href="#">
                         <div style="width: 30px; height: 30px;">
-                            <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polygon points="72 56 8 200 136 200 72 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="136 200 248 200 184 56 72 56 72 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-                            <Strong class="">EXPLORATION</Strong>
+                          <!-- <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                            <rect width="256" height="256" fill="none" />
+                            <polygon points="72 56 8 200 136 200 72 56" fill="none" stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="16" />
+                            <polyline points="136 200 248 200 184 56 72 56 72 200" fill="none" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                          </svg> -->
+                          <Strong class="">Let's Go</Strong>
+                           <svg style="fill: white;" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" enable-background="new 0 0 16 16">
+                            <path d="M0,9l4,1.5L6,16l2.861-3.82L14,14l2-14L0,9z M7.169,11.44l-0.916,2.485l-1.086-3.118l8.402-7.631L7.169,11.44z"/>
+                           </svg>
+                          
                         </div>
                         </a>
                       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

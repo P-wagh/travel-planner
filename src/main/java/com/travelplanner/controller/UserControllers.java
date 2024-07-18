@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +33,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserControllers {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserService userService;
@@ -139,6 +143,34 @@ public class UserControllers {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting user");
         }
+    }
+
+
+    // Password change 
+    @PostMapping("/user/changepassword")
+    public String changePassword(@RequestParam("oldpassword") String oldpassword, @RequestParam("newpassword") String newpassword, Principal principal, HttpSession session){
+        
+        // System.out.println("OLD PASSWORD: "+ oldpassword);
+        // System.out.println("NEW PASSWORD: "+ newpassword);
+        String uname = principal.getName();
+        User currenUser = this.userRepository.findByUser_email(uname);
+        System.out.println(currenUser);
+
+        if (this.passwordEncoder.matches(oldpassword, currenUser.getUser_password())) {
+           
+            currenUser.setUser_password(this.passwordEncoder.encode(newpassword));
+            this.userRepository.save(currenUser);
+            
+            session.setAttribute("msg", new Massege("Password change successful", "success"));
+
+            return "redirect:/login";
+
+        } else{
+            System.out.println("password do not match");
+            session.setAttribute("msg", new Massege("Password change faild.! old password do not match", "danger"));
+            return "redirect:/user/userDashboard";
+        }
+        
     }
 
  

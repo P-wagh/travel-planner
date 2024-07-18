@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Travel planner User Dashboard</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
 
@@ -30,6 +30,9 @@
         }
         .sidebar a:hover {
             color: #ffc107;
+        }
+        .active{
+            color: #ffc107 !important;
         }
         .content {
             padding: 2rem;
@@ -70,6 +73,15 @@
         <div class="row">
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
+
+                    <div class="text-white d-flex justify-content-center">
+                        <strong class="fs-5 me-2">Let's Go</strong>
+                         <svg style="fill: white;" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 16 16" enable-background="new 0 0 16 16">
+                          <path d="M0,9l4,1.5L6,16l2.861-3.82L14,14l2-14L0,9z M7.169,11.44l-0.916,2.485l-1.086-3.118l8.402-7.631L7.169,11.44z"></path>
+                         </svg>
+                    </div>
+                    <hr style="color: #fff;">
+
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">
@@ -112,7 +124,7 @@
                               <div class="dropdown-submenu dropstart">
                                 <a class="dropdown-item dropdown-toggle" href="#">Settings</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Change Password</a>
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</a>
                                     <a class="dropdown-item text-danger" href="#" onclick="deleteUser( '<%= user.getUser_id() %>' )">Delete Account</a>
                                 </div>
                             </div>
@@ -128,7 +140,7 @@
                 </div>
 
                 <!-- Model Starting  -->             
-                <!-- Modal -->
+                <!-- Modal profile-->
                 <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
@@ -244,7 +256,52 @@
                     </div>
                 </div>
 
-                <!-- Model end -->
+                <!-- Model profile end -->
+
+
+
+                <!-- Change Password Model Start-->
+                 <div class="modal-dialog modal-dialog-centered">
+                     <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <div class="modal-dialog">
+                           <div class="modal-content">
+                             <div class="modal-header">
+                               <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+                               <div>
+                                <form action="/user/changepassword" method="post">
+                                    <div class="mb-3">
+                                        <label for="oldpassword" class="form-label">Old Password</label>
+                                        <input type="password" name="oldpassword" class="form-control" id="oldpassword" placeholder="Enter old password here" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newpassword" class="form-label">New Password</label>
+                                        <input type="password" name="newpassword" class="form-control" id="newpassword" placeholder="Enter new password here" required>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-outline-dark">Save new password</button>
+                                    </div>
+                                </form>
+                               </div>
+                             </div>
+                             <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                 </div>
+
+                <!-- End Change Password Model -->
+
+
+
+
+
+
+
                 <%
                 if(msg != null){
                      
