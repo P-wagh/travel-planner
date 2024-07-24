@@ -173,5 +173,11 @@ public class UserControllers {
         
     }
 
+    @GetMapping("/user/userDashboard/suggestions")
+    public String userSuggestions() {
+        return "userDashboardSuggestions";
+    }
+    
+
  
 }

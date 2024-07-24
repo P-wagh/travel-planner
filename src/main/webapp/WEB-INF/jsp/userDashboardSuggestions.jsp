@@ -340,10 +340,13 @@
                         </div>
 
                         <div class="card">
-                            <a href="/user/userDashboard/suggestions" class="card-body" style="text-decoration: none;">
+                            <div class="card-body">
                                 <h5 class="card-title">Suggestions for You</h5>
                                 <p class="card-text">Check out these amazing travel destinations and hotels that suit your interests.</p>
-                            </a>
+                               
+                                <p>new page suggestion for user</p>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -404,26 +407,6 @@
 		
         
         function deleteUser(uid){
-            // Swal.fire({
-            //     title: "Are you sure?",
-            //     text: "You won't to delete your Account.!",
-            //     icon: "warning",
-            //     showCancelButton: true,
-            //     confirmButtonColor: "#3085d6",
-            //     cancelButtonColor: "#d33",
-            //     confirmButtonText: "Yes, delete it!"
-            // }).then((result) => {
-            //     if (result.isConfirmed) {
-            //     window.location = "/user/delete/" + uid;
-            //     Swal.fire({
-            //         title: "Deleted!",
-            //         text: "Your file has been deleted.",
-            //         icon: "success"
-            //     });
-            //     }else{
-            //         Swal("Your profile is safe.");
-            //     }
-            // });
 
             Swal.fire({
                 title: "Are you sure?",
