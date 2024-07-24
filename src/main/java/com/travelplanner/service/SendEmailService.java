@@ -20,7 +20,7 @@ public class SendEmailService {
 
         boolean f = false;
 
-        String from = "pratik@webtonictechnologies.com";
+        String from = "YOUR EMAIL";
 
         //variable for gamil host
         String host = "smtp.gmail.com";
@@ -41,7 +41,7 @@ public class SendEmailService {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 
-                return new PasswordAuthentication("pratik@webtonictechnologies.com", "8975176373");
+                return new PasswordAuthentication("YOUR EMAIL", "YOUR EMAIL PASSWOED");
             }
             
         });
