@@ -60,7 +60,7 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link" href="/admin/postRedirect">
                                 Dashboard
                             </a>
                         </li>
@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link active" href="#">
                                 Add New Trip
                             </a>
                         </li>
@@ -230,84 +230,50 @@
                     }
                 
                     %>
+                    
+                    
+                 <!-- Add Trip Form Start -->
+                 <div class="container">
+                    <div class="card mx-5 p-5">
+                        <h2 class="card-title">Add New Trip</h2>
+                        <form action="/admin/addTrip" method="post">
+                            <div class="mb-3">
+                                <label for="tripName" class="form-label">Trip Name</label>
+                                <input type="text" class="form-control" id="tripName" name="tripName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="destination" class="form-label">Destination</label>
+                                <input type="text" class="form-control" id="destination" name="destination" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sartingPlace" class="form-label">Sarting Place</label>
+                                <input type="text" class="form-control" id="sartingPlace" name="sartingPlace" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="startDate" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="startDate" name="startDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="endDate" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="endDate" name="endDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="budget" class="form-label">Budget</label>
+                                <input type="number" class="form-control" id="budget" name="budget" required>
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Add Trip</button>
+                            <button type="reset" class="btn btn-outline-dark">Reset</button>
+                        </form>
+                    </div>
+                </div>
+            
+                <!-- Add Trip Form end -->
 
                 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Total Users &nbsp; <i class="fa-solid fa-user"></i></h5>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text">Number of registered users: <%= userCount %></p>
-                                    <a href="#" class="btn btn-outline-dark">Refresh</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Total Travel Plans</h5>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text">Number of travel plans created: 75</p>
-                                    <a href="/admin/addTripForm" class="btn btn-outline-dark">Add New Trip Plan</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Recent Activity</h5>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">User</th>
-                                            <th scope="col">Activity</th>
-                                            <th scope="col">Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>John Doe</td>
-                                            <td>Created a new travel plan</td>
-                                            <td>2024-07-15</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jane Smith</td>
-                                            <td>Updated profile</td>
-                                            <td>2024-07-14</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Sam Wilson</td>
-                                            <td>Deleted a travel plan</td>
-                                            <td>2024-07-13</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Settings</h5>
-                                <p class="card-text">Manage system settings and configurations.</p>
-                                <a href="#" class="btn btn-primary">Go to Settings</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </main>
         </div>
     </div>

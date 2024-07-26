@@ -20,7 +20,7 @@ public class Trip {
     private Date starDate;
     private Date endDate;
     @Column(length = 1000)
-    private Date description;
+    private String description;
     private Double budget;
 
     
@@ -29,7 +29,7 @@ public class Trip {
 
 
     public Trip(int id, String tripName, String destination, String sartingPlace, Date starDate, Date endDate,
-            Date description, Double budget) {
+            String description, Double budget) {
         this.id = id;
         this.tripName = tripName;
         this.destination = destination;
@@ -101,12 +101,12 @@ public class Trip {
     }
 
 
-    public Date getDescription() {
+    public String getDescription() {
         return description;
     }
 
 
-    public void setDescription(Date description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
