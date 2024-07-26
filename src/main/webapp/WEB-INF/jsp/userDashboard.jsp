@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/user/userDashboard/suggestions">
                                 Suggestions
                             </a>
                         </li>
@@ -402,28 +402,8 @@
         });
 
 		
-        
+        // for sweet alert
         function deleteUser(uid){
-            // Swal.fire({
-            //     title: "Are you sure?",
-            //     text: "You won't to delete your Account.!",
-            //     icon: "warning",
-            //     showCancelButton: true,
-            //     confirmButtonColor: "#3085d6",
-            //     cancelButtonColor: "#d33",
-            //     confirmButtonText: "Yes, delete it!"
-            // }).then((result) => {
-            //     if (result.isConfirmed) {
-            //     window.location = "/user/delete/" + uid;
-            //     Swal.fire({
-            //         title: "Deleted!",
-            //         text: "Your file has been deleted.",
-            //         icon: "success"
-            //     });
-            //     }else{
-            //         Swal("Your profile is safe.");
-            //     }
-            // });
 
             Swal.fire({
                 title: "Are you sure?",

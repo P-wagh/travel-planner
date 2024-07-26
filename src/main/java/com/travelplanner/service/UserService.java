@@ -74,5 +74,9 @@ public class UserService {
 
         userRepository.save(user);
     }
-    // Updaye user profile end
+    
+    // for count the users
+    public int getCount(){
+        return (int) userRepository.count();
+    }
 }

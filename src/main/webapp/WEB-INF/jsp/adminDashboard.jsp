@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import= "com.travelplanner.entity.Admin, com.travelplanner.helper.Massege, jakarta.servlet.http.HttpSession" %>
+<%@ page import= "com.travelplanner.entity.Admin, com.travelplanner.helper.Massege, jakarta.servlet.http.HttpSession, com.travelplanner.service.UserService" %>
 <%
 	
+	UserService userService = new UserService();
 	Admin admin = (Admin) session.getAttribute("admin");
     Massege msg = (Massege) session.getAttribute("msg");
+    int userCount = (int) session.getAttribute("userCount");
 
 %>
 <!DOCTYPE html>
@@ -14,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -160,7 +163,7 @@
                         </div>
 
                         <div id="editProfile" style="display: none;">
-                            <form action="/user/updateprofile" method="post" enctype="multipart/form-data">
+                            <form action="/admin/updateprofile" method="post" enctype="multipart/form-data">
                                 <table class="table">
                                     <tbody>
                                         <tr>
@@ -169,20 +172,22 @@
 										</tr>      
                                       <tr>
                                         <th scope="row">User Id: </th>
-                                        <td><%= admin.getAdminId() %> <input type="hidden" name="user_id" value="<%= admin.getAdminId() %>" id=""></td>
-
+                                        <td><%= admin.getAdminId() %> <input type="hidden" name="adminId" value="<%= admin.getAdminId() %>" id=""></td>
                                       </tr>
+
+                                      
+                                      
                                       <tr>
                                         <th scope="row">Name: </th>
-                                        <td><input type="text" class="form-control" name="user_name" id="" value="<%= admin.getAdminName() %>"></td>
+                                        <td><input type="text" class="form-control" name="adminName" id="" value="<%= admin.getAdminName() %>"></td>
                                       </tr>
                                       <tr>
                                         <th scope="row">Phone no:</th>
-                                        <td><input type="text" class="form-control" name="user_phone" id="" value="<%= admin.getAdminPhone() %>"></td>
+                                        <td><input type="text" class="form-control" name="adminPhone" id="" value="<%= admin.getAdminPhone() %>"></td>
                                       </tr>
                                       <tr>
                                         <th scope="row">Email: </th>
-                                        <td><input type="text" name="user_email" class="form-control" id="" value="<%= admin.getAdminEmail() %>"></td>
+                                        <td><input type="text" name="adminEmail" class="form-control" id="" value="<%= admin.getAdminEmail() %>"></td>
                                       </tr>
                                       <tr>
                                         <th scope="row">role: </th>
@@ -206,13 +211,31 @@
 
                 <!-- Model profile end -->
 
+                <%
+                    if(msg != null){
+                            		 
+                         
+                %>
+                
+                <div class="alert alert-<%= msg.getType() %>" role="alert">
+			        <%= msg.getDiscription() %>
+			    </div>
+                <%
+                    session.removeAttribute("msg");
+                    }
+                
+                    %>
+
                 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Total Users</h5>
-                                <p class="card-text">Number of registered users: 150</p>
+                                <h5 class="card-title">Total Users &nbsp; <i class="fa-solid fa-user"></i></h5>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Number of registered users: <%= userCount %></p>
+                                    <a href="#" class="btn btn-outline-dark">Refresh</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -220,7 +243,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Total Travel Plans</h5>
-                                <p class="card-text">Number of travel plans created: 75</p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Number of travel plans created: 75</p>
+                                    <a href="" class="btn btn-outline-dark">Add New Trip Plan</a>
+                                </div>
                             </div>
                         </div>
                     </div>

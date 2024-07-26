@@ -1,22 +1,35 @@
 package com.travelplanner.controller;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.travelplanner.entity.Admin;
 import com.travelplanner.helper.Massege;
 import com.travelplanner.repository.AdminRepository;
+import com.travelplanner.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
 
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Autowired
@@ -29,7 +42,11 @@ public class AdminController {
     
 
     @PostMapping("/admin/adminDashboard")
-    public String adminl(Principal principal, @RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+    public String adminl( @RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+
+        int userCount = (int) userRepository.count();
+        session.setAttribute("userCount", userCount);
+
         if (username.equals(adminRepository.getAdminEmail())) {
             if (password.equals(adminRepository.getAdminPassword())) {
 
@@ -46,6 +63,55 @@ public class AdminController {
             session.setAttribute("msg", new Massege("Invalid username.!!", "danger"));
             return "redirect:/adminlogin";
         }
+    }
+
+    @PostMapping("/admin/updateprofile")
+    public String upadateProfile(@ModelAttribute("Admin") Admin admin, @RequestParam(value = "profileimage", required = false) MultipartFile file, HttpSession session, Principal principal){
+
+        int id = admin.getAdminId();
+        Optional<Admin> currentAdminoOptional = adminRepository.findById(id);
+        Admin currentAdmin = currentAdminoOptional.get();
+
+        try {
+
+            if (!file.isEmpty()) {
+
+                if (!currentAdmin.getAdminPhoto().equals("default.png")) {
+                    File deleteFile = new ClassPathResource("static/images/profiles").getFile();
+                    File file2 = new File(deleteFile, currentAdmin.getAdminPhoto());
+                    file2.delete();
+                    
+                }
+
+                File savFile = new ClassPathResource("static/images/profiles").getFile();
+                Path path = Paths.get(savFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
+                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+
+                admin.setAdminPhoto(file.getOriginalFilename());
+            }else{
+                admin.setAdminPhoto(currentAdmin.getAdminPhoto());
+            }
+
+            admin.setAdminPassword(currentAdmin.getAdminPassword());
+            adminRepository.save(admin);
+
+            session.setAttribute("msg", new Massege("Profile Updated Successfully.", "success"));
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.setAttribute("msg", new Massege("Profile Updated Faild.!!.", "danger"));
+
+        }
+
+
+        return "redirect:/admin/postRedirect";
+    }
+
+    // this is for intermidiet for update profile
+    @GetMapping("/admin/postRedirect")
+    public String postRedirect() {
+    return "postRedirect"; 
     }
     
 }

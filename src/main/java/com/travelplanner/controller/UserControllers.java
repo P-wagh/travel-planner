@@ -72,7 +72,7 @@ public class UserControllers {
         int id = user.getUser_id();
         Optional<User> currentUserOptional = userRepository.findById(id);
         User currentUser = currentUserOptional.get();
-        System.out.println("USER Database: "+ currentUser);
+        // System.out.println("USER Database: "+ currentUser);
 
         try {
         
