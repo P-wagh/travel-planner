@@ -322,26 +322,29 @@
                         <h5 class="card-title">Suggestions for You</h5>
                         <p class="card-text">Check out these amazing travel destinations and hotels that suit your interests.</p>
                        
-                        <%
+                        <div class="d-flex">
+                            <%
                             if(alltrip != null){
                                 for(Trip trip : alltrip){
-                        %>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= trip.getTripName() %></h5>
-                                    <p class="card-text"><%= trip.getDescription() %></p>
-                                    <p class="card-text"><strong>Destination:</strong> <%= trip.getDestination() %></p>
-                                    <p class="card-text"><strong>Budget:</strong> <%= trip.getBudget() %> Rs</p>
-                                    <p class="card-text"><strong>Start Date:</strong> <%= trip.getStartDate() %></p>
-                                    <p class="card-text"><strong>End Date:</strong> <%= trip.getEndDate() %></p>
+                            %>
+                            <div class="col-md-4 mx-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= trip.getTripName() %></h5>
+                                        <p class="card-text"><%= trip.getDescription() %></p>
+                                        <p class="card-text"><strong>Destination:</strong> <%= trip.getDestination() %></p>
+                                        <p class="card-text"><strong>Budget:</strong> <%= trip.getBudget() %> Rs</p>
+                                        <p class="card-text"><strong>Start Date:</strong> <%= trip.getStartDate() %></p>
+                                        <p class="card-text"><strong>End Date:</strong> <%= trip.getEndDate() %></p>
+                                        <a href="#" class="btn btn-outline-dark">Book your seat</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <%
+                            <%
+                                    }
                                 }
-                            }
-                        %>
+                            %>
+                        </div>
                         
                     </div>
                 </div>
