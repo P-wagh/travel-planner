@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import= "com.travelplanner.entity.User, com.travelplanner.helper.Massege, jakarta.servlet.http.HttpSession" %>
+<%@ page import= "com.travelplanner.entity.User, com.travelplanner.helper.Massege,com.travelplanner.entity.Trip, jakarta.servlet.http.HttpSession, java.util.List" %>
 <%
 	
 	User user = (User) session.getAttribute("user");
     Massege msg = (Massege) session.getAttribute("msg");
+    int tripCount = (int) session.getAttribute("tripCount");
+    List<Trip> alltrip = (List<Trip>) session.getAttribute("alltrip");
 
 %>
 <!DOCTYPE html>
@@ -327,8 +329,10 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Welcome to your Travel Planner!</h5>
-                                <p class="card-text">Here you can manage your travel plans and get suggestions based on your preferences.</p>
+                                <a href="/user/userDashboardManage" class="card-body" style="text-decoration: none;">
+                                    <h5 class="card-title">Welcome to your Travel Planner!</h5>
+                                    <p class="card-text">Here you can manage your travel plans and get suggestions based on your preferences.</p>
+                                </a>
                             </div>
                         </div>
 
@@ -342,7 +346,7 @@
                         <div class="card">
                             <a href="/user/userDashboard/suggestions" class="card-body" style="text-decoration: none;">
                                 <h5 class="card-title">Suggestions for You</h5>
-                                <p class="card-text">Check out these amazing travel destinations and hotels that suit your interests.</p>
+                                <p class="card-text">Check out these amazing travel destinations and explore it with us.</p>
                             </a>
                         </div>
                     </div>

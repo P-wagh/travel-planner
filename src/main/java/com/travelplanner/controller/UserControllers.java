@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.travelplanner.entity.Trip;
 import com.travelplanner.entity.User;
 import com.travelplanner.helper.Massege;
 import com.travelplanner.repository.UserRepository;
+import com.travelplanner.service.TripService;
 import com.travelplanner.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserControllers {
+
+    @Autowired
+    private TripService tripService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -52,6 +58,12 @@ public class UserControllers {
     public String userProfile(Model model, Principal principal, HttpSession session) {
         String userName = principal.getName();
         System.out.println(userName);
+
+        // to get the count of trip
+        int tripCount = tripService.getCountOfTrip();
+        session.setAttribute("tripCount", tripCount);
+        List<Trip> trips = tripService.getAllTrips();
+        session.setAttribute("alltrip", trips);
 
         // get the user using username (Email)
         User user = userRepository.findByUser_email(userName);
@@ -179,5 +191,9 @@ public class UserControllers {
     }
     
 
+    @GetMapping("/user/userDashboardManage")
+    public String userDashboardManage(){
+        return "userDashboardManage";
+    }
  
 }

@@ -3,7 +3,7 @@
 <%@ page import= "com.travelplanner.entity.User, com.travelplanner.helper.Massege,com.travelplanner.entity.Trip, jakarta.servlet.http.HttpSession, java.util.List" %>
 <%
 	
-    User user = (User) session.getAttribute("user");
+	User user = (User) session.getAttribute("user");
     Massege msg = (Massege) session.getAttribute("msg");
     int tripCount = (int) session.getAttribute("tripCount");
     List<Trip> alltrip = (List<Trip>) session.getAttribute("alltrip");
@@ -64,6 +64,13 @@
             margin-top: 0;
             margin-left: 0;
         }
+        .welcome-section {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
     </style>
 
 
@@ -86,7 +93,7 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link " href="/user/userDashboard">
+                            <a class="nav-link" href="/user/userDashboard">
                                 Dashboard
                             </a>
                         </li>
@@ -96,7 +103,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link" href="/user/userDashboard/suggestions">
                                 Suggestions
                             </a>
                         </li>
@@ -316,37 +323,18 @@
                 session.removeAttribute("msg");
                     }
                 %>
-
-                <div class="card p-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Suggestions for You</h5>
-                        <p class="card-text">Check out these amazing travel destinations and hotels that suit your interests.</p>
-                       
-                        <%
-                            if(alltrip != null){
-                                for(Trip trip : alltrip){
-                        %>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= trip.getTripName() %></h5>
-                                    <p class="card-text"><%= trip.getDescription() %></p>
-                                    <p class="card-text"><strong>Destination:</strong> <%= trip.getDestination() %></p>
-                                    <p class="card-text"><strong>Budget:</strong> <%= trip.getBudget() %> Rs</p>
-                                    <p class="card-text"><strong>Start Date:</strong> <%= trip.getStartDate() %></p>
-                                    <p class="card-text"><strong>End Date:</strong> <%= trip.getEndDate() %></p>
-                                </div>
-                            </div>
-                        </div>
-                        <%
-                                }
-                            }
-                        %>
-                        
+                
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h2>Welcome to your Travel Planner, <%= user.getUser_name() %>!</h2>
+                    <p>Here you can manage your travel plans and get suggestions based on your preferences.</p>
+                    <div class="d-flex justify-content-between">
+                        <!-- <a href="/user/addTrip" class="btn btn-primary">Add New Trip</a>
+                        <a href="/user/viewTrips" class="btn btn-secondary">View Past Trips</a>
+                        <a href="/user/preferences" class="btn btn-info">Update Preferences</a> -->
                     </div>
                 </div>
-                
-                
+
             </main>
         </div>
     </div>
@@ -402,7 +390,7 @@
         });
 
 		
-        
+        // for sweet alert
         function deleteUser(uid){
 
             Swal.fire({

@@ -17,7 +17,7 @@ public class Trip {
     private String tripName;
     private String destination;
     private String sartingPlace;
-    private Date starDate;
+    private Date startDate;
     private Date endDate;
     @Column(length = 1000)
     private String description;
@@ -34,7 +34,7 @@ public class Trip {
         this.tripName = tripName;
         this.destination = destination;
         this.sartingPlace = sartingPlace;
-        this.starDate = starDate;
+        this.startDate = starDate;
         this.endDate = endDate;
         this.description = description;
         this.budget = budget;
@@ -81,13 +81,13 @@ public class Trip {
     }
 
 
-    public Date getStarDate() {
-        return starDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
 
-    public void setStarDate(Date starDate) {
-        this.starDate = starDate;
+    public void setStartDate(Date starDate) {
+        this.startDate = starDate;
     }
 
 

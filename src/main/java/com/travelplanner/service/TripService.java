@@ -1,5 +1,7 @@
 package com.travelplanner.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,13 @@ public class TripService {
 
     public Trip saveTrip(Trip trip){
         return tripRepository.save(trip);
+    }
+
+    public int getCountOfTrip(){
+        return (int) tripRepository.count();
+    }
+
+    public List<Trip> getAllTrips() {
+        return tripRepository.findAll();
     }
 }
