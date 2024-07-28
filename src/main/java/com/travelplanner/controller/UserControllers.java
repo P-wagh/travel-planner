@@ -8,8 +8,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
@@ -22,9 +24,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
 import com.travelplanner.entity.Trip;
 import com.travelplanner.entity.User;
 import com.travelplanner.helper.Massege;
@@ -194,6 +201,37 @@ public class UserControllers {
     @GetMapping("/user/userDashboardManage")
     public String userDashboardManage(){
         return "userDashboardManage";
+    }
+
+    // For razorpay integration 
+    // creating order request
+
+    @PostMapping("/user/createOrder")
+    @ResponseBody
+    public String createOrder(@RequestBody Map<String, Object> data) throws RazorpayException{
+        // System.out.println(data);
+        Double amt = Double.parseDouble(data.get("amount").toString());
+        // System.out.println(amt);
+
+
+        var client = new RazorpayClient("rzp_test_gdTKt6nq4H7aFT", "MThlp9gArfRf75MMao2iH7Yr");
+
+        JSONObject orderRequest = new JSONObject();
+        orderRequest.put("amount",amt*100);
+        orderRequest.put("currency","INR");
+        orderRequest.put("receipt", "receipt#1");
+        // JSONObject notes = new JSONObject();
+        // notes.put("notes_key_1","Tea, Earl Grey, Hot");
+        // notes.put("notes_key_1","Tea, Earl Grey, Hot");
+        // orderRequest.put("notes",notes);
+
+        // creating order
+        Order order = client.orders.create(orderRequest);
+        System.out.println(order);
+
+        // Save information of order in our database
+
+        return order.toString();
     }
  
 }
