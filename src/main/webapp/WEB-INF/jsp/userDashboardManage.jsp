@@ -64,6 +64,13 @@
             margin-top: 0;
             margin-left: 0;
         }
+        .welcome-section {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
     </style>
 
 
@@ -86,7 +93,7 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link" href="/user/userDashboard">
                                 Dashboard
                             </a>
                         </li>
@@ -317,40 +324,17 @@
                     }
                 %>
                 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="user-info">
-                            <h4>User Information</h4>
-                            <p><strong>Name:</strong> <%= user.getUser_name() %></p>
-                            <p><strong>Email:</strong> <%= user.getUser_email() %></p>
-                            <p><strong>City:</strong> <%= user.getUser_city() %></p>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <a href="/user/userDashboardManage" class="card-body" style="text-decoration: none;">
-                                    <h5 class="card-title">Welcome to your Travel Planner!</h5>
-                                    <p class="card-text">Here you can manage your travel plans and get suggestions based on your preferences.</p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Recent Travel Plans</h5>
-                                <p class="card-text">You have no recent travel plans.</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <a href="/user/userDashboard/suggestions" class="card-body" style="text-decoration: none;">
-                                <h5 class="card-title">Suggestions for You</h5>
-                                <p class="card-text">Check out these amazing travel destinations and explore it with us.</p>
-                            </a>
-                        </div>
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h2>Welcome to your Travel Planner, <%= user.getUser_name() %>!</h2>
+                    <p>Here you can manage your travel plans and get suggestions based on your preferences.</p>
+                    <div class="d-flex justify-content-between">
+                        <!-- <a href="/user/addTrip" class="btn btn-primary">Add New Trip</a>
+                        <a href="/user/viewTrips" class="btn btn-secondary">View Past Trips</a>
+                        <a href="/user/preferences" class="btn btn-info">Update Preferences</a> -->
                     </div>
                 </div>
+
             </main>
         </div>
     </div>

@@ -63,7 +63,7 @@
                     <div class="">
                         <div class="form-container mt-3">
                             <div class="d-flex justify-content-center mb-2">
-                                <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                                <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                             </div>
                             <h2 class="text-center">User Login</h2>
                             <%
@@ -79,7 +79,7 @@
                             	}
                             %>
                             
-                            <form action="/login" method="post">
+                            <form action="/admin/adminDashboard" method="post">
 			                    <div class="form-group">
 			                        <label for="username">Email</label>
 			                        <input type="email" class="form-control transparent-input" id="username" name="username" placeholder="Enter your email" required>
@@ -93,12 +93,12 @@
                                 <div class="d-flex justify-content-center mt-3">
                                     <a class="" href="/home"><u>Home</u> </a>
                                 </div>
-                                <div class="d-flex justify-content-center mt-3">
+                                <!-- <div class="d-flex justify-content-center mt-3">
                                     <a class="" href="/userRegistration"><u>Do not have an account</u> </a>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3">
                                     <a class="text-danger" href="/forgot-password"><u>forget password?</u> </a>
-                                </div>
+                                </div> -->
 			                </form>
                         </div>
                     </div>
