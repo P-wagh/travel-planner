@@ -32,9 +32,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
+import com.travelplanner.entity.Payment;
 import com.travelplanner.entity.Trip;
 import com.travelplanner.entity.User;
 import com.travelplanner.helper.Massege;
+import com.travelplanner.repository.PaymentRepository;
 import com.travelplanner.repository.UserRepository;
 import com.travelplanner.service.TripService;
 import com.travelplanner.service.UserService;
@@ -43,6 +45,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserControllers {
+
+    @Autowired
+    private PaymentRepository paymentRepository;
 
     @Autowired
     private TripService tripService;
@@ -208,7 +213,7 @@ public class UserControllers {
 
     @PostMapping("/user/createOrder")
     @ResponseBody
-    public String createOrder(@RequestBody Map<String, Object> data) throws RazorpayException{
+    public String createOrder(@RequestBody Map<String, Object> data, Principal principal) throws RazorpayException{
         // System.out.println(data);
         Double amt = Double.parseDouble(data.get("amount").toString());
         // System.out.println(amt);
@@ -230,8 +235,33 @@ public class UserControllers {
         System.out.println(order);
 
         // Save information of order in our database
+        Payment payment = new Payment();
+        payment.setAmount(order.get("amount")+"");
+        payment.setOrderId(order.get("id"));
+        payment.setPaymentId(null);
+        payment.setStatus("created");
+        payment.setUser(this.userRepository.findByUser_email(principal.getName()));
+        payment.setReceipt(order.get("receipt"));
+
+        this.paymentRepository.save(payment);
 
         return order.toString();
     }
+
+    @PostMapping("/user/updatePayment")
+    public ResponseEntity<?> updatePayment(@RequestBody Map<String, Object> data){
+
+        System.out.println(data);
+        Payment payment = this.paymentRepository.findByOrderId(data.get("order_id").toString());
+
+        payment.setPaymentId(data.get("payment_id").toString());
+        payment.setStatus(data.get("status").toString());
+
+        this.paymentRepository.save(payment);
+
+        return ResponseEntity.ok(Map.of("msg", "updated"));
+    }
+
+
  
 }

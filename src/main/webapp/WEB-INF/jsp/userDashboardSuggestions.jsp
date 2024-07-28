@@ -530,6 +530,7 @@
                     success: function (response) {
                         // this function run when success
                         console.log(response)
+                        console.log(response.id)
 
                         if (response.status == "created") {
                             // open payment form
@@ -548,12 +549,16 @@
                                     console.log(response.razorpay_order_id);
                                     console.log(response.razorpay_signature);
                                     console.log("payment succsessful")
+
+                                    // to update the status value in the payment table
+                                    updatePaymentOnServer(response.razorpay_payment_id, response.razorpay_order_id,'paid');
+
                                     // alert("payment successfull")
-                                    Swal.fire({
-                                        title: "Payment Successfull!",
-                                        text: "Your seat is booked!",
-                                        icon: "success"
-                                    });
+                                    // Swal.fire({
+                                    //     title: "Payment Successfull!",
+                                    //     text: "Your seat is booked!",
+                                    //     icon: "success"
+                                    // });
                                 },
                                 "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
                                     "name": "<%= user.getUser_name() %>", //your customer's name
@@ -597,6 +602,32 @@
                 }
             )
 
+        }
+
+        function updatePaymentOnServer(payment_id, order_id, status)
+        {
+            $.ajax({
+                url:"/user/updatePayment",
+                data: JSON.stringify({payment_id:payment_id, order_id:order_id,status:status}),
+                contentType:"application/json",
+                type:"POST",
+                dataType:"json",
+                success:function(response){
+                    Swal.fire({
+                        title: "Payment Successfull!",
+                        text: "Your seat is booked!",
+                        icon: "success"
+                    });
+                },
+                error:function(error){
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",                            
+                        text: "Your payment is successfull, but we did not get on server we will contact you as soon as possible",
+                        // footer: '<a href="#">Why do I have this issue?</a>'
+                    });
+                },
+            })
         }
 
 
