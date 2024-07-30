@@ -91,7 +91,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/user/userDashboardYourTravelPlans">
                                 Travel Plans
                             </a>
                         </li>
@@ -337,10 +337,10 @@
                         </div>
 
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Recent Travel Plans</h5>
+                            <a class="card-body" href="/user/userDashboardYourTravelPlans" style="text-decoration: none;">
+                                <h5 class="card-title">Your Recent Travel Plans</h5>
                                 <p class="card-text">You have no recent travel plans.</p>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="card">

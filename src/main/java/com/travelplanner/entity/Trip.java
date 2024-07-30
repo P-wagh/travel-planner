@@ -1,12 +1,14 @@
 package com.travelplanner.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Trip {
@@ -23,6 +25,9 @@ public class Trip {
     private String description;
     private Double budget;
 
+    @OneToMany(mappedBy = "trip")
+    private List<Payment> payment;
+
     
     public Trip() {
     }
@@ -38,6 +43,20 @@ public class Trip {
         this.endDate = endDate;
         this.description = description;
         this.budget = budget;
+    }
+
+
+    public Trip(int id, String tripName, String destination, String sartingPlace, Date startDate, Date endDate,
+            String description, Double budget, List<Payment> payment) {
+        this.id = id;
+        this.tripName = tripName;
+        this.destination = destination;
+        this.sartingPlace = sartingPlace;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
+        this.budget = budget;
+        this.payment = payment;
     }
 
 
@@ -118,6 +137,16 @@ public class Trip {
 
     public void setBudget(Double budget) {
         this.budget = budget;
+    }
+
+
+    public List<Payment> getPayment() {
+        return payment;
+    }
+
+
+    public void setPayment(List<Payment> payment) {
+        this.payment = payment;
     }
 
     

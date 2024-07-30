@@ -21,6 +21,9 @@ public class Payment {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Trip trip;
+
     private String paymentId;
 
 
@@ -31,7 +34,7 @@ public class Payment {
 
     
 
-    public Payment(Long pymentId, String orderId, String amount, String receipt, String status, User user,
+    public Payment(Long pymentId, String orderId, String amount, String receipt, String status, User user,Trip trip,
             String paymentId) {
         PymentId = pymentId;
         this.orderId = orderId;
@@ -39,12 +42,21 @@ public class Payment {
         this.receipt = receipt;
         this.status = status;
         this.user = user;
+        this.trip = trip;
         this.paymentId = paymentId;
     }
 
 
 
     // Getters and Setters
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
+    
     public Long getPymentId() {
         return PymentId;
     }
@@ -108,9 +120,9 @@ public class Payment {
         return "Payment [PymentId=" + PymentId + ", orderId=" + orderId + ", amount=" + amount + ", receipt=" + receipt
                 + ", status=" + status + ", user=" + user + ", paymentId=" + paymentId + "]";
     }
-
-
     
     
+    
+
 
 }
