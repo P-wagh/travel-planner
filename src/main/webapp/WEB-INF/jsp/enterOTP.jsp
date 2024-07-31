@@ -11,6 +11,7 @@
 <meta charset="ISO-8859-1">
 <title>Enter OTP</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css ">
 <style>
     .mt-5 {
         margin-top: 10% !important;

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ page import="com.travelplanner.entity.User, com.travelplanner.helper.Massege,com.travelplanner.entity.Trip, jakarta.servlet.http.HttpSession, java.util.List" %>
+<%@ page import="com.travelplanner.entity.User, com.travelplanner.entity.Payment, com.travelplanner.helper.Massege,com.travelplanner.entity.Trip, jakarta.servlet.http.HttpSession, java.util.List" %>
 <% 
     User user=(User) session.getAttribute("user");
     Massege msg=(Massege) session.getAttribute("msg");
     int tripCount=(int) session.getAttribute("tripCount");
-    List<Trip> alltrip = (List<Trip>) session.getAttribute("alltrip");
+    List<Payment> useralltrip = (List<Payment>) session.getAttribute("paymentList");
 %>
 
 <!DOCTYPE html>
@@ -15,6 +15,7 @@
     <title>Travel planner User Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/styleForUserDashboard.css ">
+
 </head>
 
 <body>
@@ -43,12 +44,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/userDashboardYourTravelPlans">
+                            <a class="nav-link active" href="#">
                                 Travel Plans
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link" href="/user/userDashboard/suggestions">
                                 Suggestions
                             </a>
                         </li>
@@ -315,42 +316,42 @@
 
                         <div class="card p-5">
                             <div class="card-body">
-                                <h5 class="card-title">Suggestions for You</h5>
-                                <p class="card-text">Check out these amazing travel destinations and
-                                    hotels that suit your interests.</p>
+                                <h5 class="card-title">Your Travel Plans</h5>
+                                <p class="card-text">You have no recent travel plans.</p>
 
-                                <div class="d-flex d-flex flex-wrap">
-                                    <% if(alltrip !=null){ for(Trip trip : alltrip){ %>
+                                <div class="d-flex mt-5">
+                                    <% if(useralltrip !=null){ 
+                                    	for(Payment usertrip : useralltrip){ 
+                                    %>
                                         <div class="col-md-4 mx-2">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <h5 class="card-title">
-                                                        <%= trip.getTripName() %>
+                                                        <%= usertrip.getTrip().getTripName() %>
                                                     </h5>
                                                     <p class="card-text">
-                                                        <%= trip.getDescription() %>
+                                                        <%= usertrip.getTrip().getDescription() %>
                                                     </p>
                                                     <p class="card-text"><strong>Destination:</strong>
-                                                        <%= trip.getDestination() %>
+                                                        <%= usertrip.getTrip().getDestination() %>
                                                     </p>
-                                                    <p class="card-text"><strong>Budget:</strong>
+                                                    <p class="card-text"><strong>Payment status:</strong>
                                                     <div class="amount">
-                                                        <%= trip.getBudget() %>
+                                                        <%= usertrip.getStatus() %>
                                                     </div>Rs </p>
                                                     <p class="card-text"><strong>Start Date:</strong>
-                                                        <%= trip.getStartDate() %>
+                                                        <%= usertrip.getTrip().getStartDate() %>
                                                     </p>
                                                     <p class="card-text"><strong>End Date:</strong>
-                                                        <%= trip.getEndDate() %>
+                                                        <%= usertrip.getTrip().getEndDate() %>
                                                     </p>
-                                                    <button onclick="paymentStart( '<%= trip.getBudget() %>', '<%= trip.getId() %>')"
-                                                        class="btn btn-outline-dark">Book your
-                                                        seat</button>
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <% } } %>
+                                        <% 		}
+                                    		} 
+                                    	%>
                                 </div>
 
                             </div>
@@ -365,7 +366,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- jQuery (User to define = '$' if not add jQuery they it give error) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -376,8 +377,8 @@
     <!-- Razorpay Script -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-    <!-- Our script app.js -->
-    <script src="<%= request.getContextPath() %>/js/app.js"></script>
+    <!-- Our Script app.js -->
+     <script src="<%= request.getContextPath() %>/js/app.js"></script>
 
 </body>
 

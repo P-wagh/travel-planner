@@ -4,9 +4,9 @@
 <%
 	
 	User user = (User) session.getAttribute("user");
-    Massege msg = (Massege) session.getAttribute("msg");
-    int tripCount = (int) session.getAttribute("tripCount");
-    List<Trip> alltrip = (List<Trip>) session.getAttribute("alltrip");
+  Massege msg = (Massege) session.getAttribute("msg");
+  int tripCount = (int) session.getAttribute("tripCount");
+  List<Trip> alltrip = (List<Trip>) session.getAttribute("alltrip");
 
 %>
 <!DOCTYPE html>
@@ -15,65 +15,7 @@
 <meta charset="ISO-8859-1">
 <title>Travel planner User Dashboard</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-
-<style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .sidebar {
-            height: 100vh;
-            background-color: #343a40;
-            padding-top: 1rem;
-        }
-        .sidebar a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .sidebar a:hover {
-            color: #ffc107;
-        }
-        .active{
-            color: #ffc107 !important;
-        }
-        .content {
-            padding: 2rem;
-        }
-        .user-info {
-            background-color: #fff;
-            padding: 1rem;
-            border-radius: .25rem;
-            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
-        }
-        .card {
-            margin-bottom: 1.5rem;
-        }
-
-        /* For profile ficture to cover all space in div */
-        .profilepicture{
-            object-fit: cover;
-        }
-
-        /* For drop down */
-        .dropdown-submenu {
-        position: relative;
-        }
-        .dropdown-submenu .dropdown-menu {
-            top: 0;
-            left: -100%;
-            margin-top: 0;
-            margin-left: 0;
-        }
-        .welcome-section {
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-    </style>
-
-
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/styleForUserDashboard.css ">
 </head>
 <body>
 
@@ -351,80 +293,8 @@
     <!-- Sweet alert CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Script for edit profile -->
-    <script type="text/javascript">
-		$(document).ready(function() {
-			let editStatus = false;
-			$("#edit-profile").click(function() {
-
-				if (editStatus == false) {
-					$("#showProfile").hide();
-					$("#editProfile").show();
-
-					editStatus = true;
-
-					$(this).text("Back");
-				} else {
-					$("#showProfile").show();
-					$("#editProfile").hide();
-
-					editStatus = false;
-
-					$(this).text("Edit");
-				}
-			})
-		});
-
-
-        // Script for the drop down menu
-        $('.dropdown-submenu a.dropdown-toggle').on("click", function(e) {
-            var $subMenu = $(this).next(".dropdown-menu");
-            if (!$subMenu.hasClass('show')) {
-                $subMenu.parents('.dropdown-menu').first().find('.show').removeClass("show");
-            }
-            $subMenu.toggleClass('show');
-            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-                $('.dropdown-submenu .show').removeClass("show");
-            });
-            return false;
-        });
-
-		
-        // for sweet alert
-        function deleteUser(uid){
-
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch('/user/delete/' + uid, {
-                        method: 'DELETE',
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            Swal.fire("Deleted!", "Your account has been deleted.", "success").then(() => {
-                                // Redirect to a suitable page after deletion
-                                window.location = '/home';
-                            });
-                        } else {
-                            Swal.fire("Error!", "There was a problem deleting your account.", "error");
-                        }
-                    })
-                    .catch(error => {
-                        Swal.fire("Error!", "There was a problem deleting your account.", "error");
-                    });
-                } else {
-                    Swal.fire("Cancelled", "Your profile is safe.", "info");
-                }
-            });
-        }
-	</script>
+    <!-- Our script app.js -->
+    <script src="<%= request.getContextPath() %>/js/app.js"></script>
     
 </body>
 </html>

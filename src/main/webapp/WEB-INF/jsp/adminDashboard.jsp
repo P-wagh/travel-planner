@@ -101,7 +101,7 @@
                     <div class="d-flex ">
                         <div class="flex-shrink-0 dropdown mb-2">
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                              <img src="<%= request.getContextPath() %>/images/profiles/<%= admin.getAdminPhoto() %>" alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
+                              <img style="object-fit: cover;" src="<%= request.getContextPath() %>/images/profiles/<%= admin.getAdminPhoto() %>" alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
                             <ul class="dropdown-menu text-small shadow">
                               <li><a class="dropdown-item" href="#">New project...</a></li>

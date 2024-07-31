@@ -1,10 +1,13 @@
 package com.travelplanner.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -27,6 +30,10 @@ public class User {
     private String userRole;
     private String user_password;
 
+    // for payment of user
+    @OneToMany(mappedBy = "user")
+    private List<Payment> payment;
+
 
     // Default Constructor
     public User() {
@@ -46,6 +53,24 @@ public class User {
         this.user_photo = user_photo;
         this.userRole = userRole;
         this.user_password = user_password;
+    }
+
+
+    // Contructor for add payment details also
+    public User(int user_id, String user_name, String user_address, String user_city, int user_city_pincode,
+            String user_phone, String user_email, String user_photo, String userRole, String user_password,
+            List<Payment> payment) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.user_address = user_address;
+        this.user_city = user_city;
+        this.user_city_pincode = user_city_pincode;
+        this.user_phone = user_phone;
+        this.user_email = user_email;
+        this.user_photo = user_photo;
+        this.userRole = userRole;
+        this.user_password = user_password;
+        this.payment = payment;
     }
 
 
@@ -163,6 +188,16 @@ public class User {
     public void setUser_photo(String user_photo) {
         this.user_photo = user_photo;
     }
+    
+
+    public List<Payment> getPayment() {
+        return payment;
+    }
+
+
+    public void setPayment(List<Payment> payment) {
+        this.payment = payment;
+    } 
 
 
     // ToString Method

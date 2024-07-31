@@ -37,6 +37,7 @@ import com.travelplanner.entity.Trip;
 import com.travelplanner.entity.User;
 import com.travelplanner.helper.Massege;
 import com.travelplanner.repository.PaymentRepository;
+import com.travelplanner.repository.TripRepository;
 import com.travelplanner.repository.UserRepository;
 import com.travelplanner.service.TripService;
 import com.travelplanner.service.UserService;
@@ -45,6 +46,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserControllers {
+
+    @Autowired
+    private TripRepository tripRepository;
 
     @Autowired
     private PaymentRepository paymentRepository;
@@ -218,6 +222,10 @@ public class UserControllers {
         Double amt = Double.parseDouble(data.get("amount").toString());
         // System.out.println(amt);
 
+        int tripId = Integer.parseInt(data.get("tripId").toString());
+        Optional<Trip> tripOptional = this.tripRepository.findById(tripId);
+        Trip trip = tripOptional.get();
+
 
         var client = new RazorpayClient("rzp_test_gdTKt6nq4H7aFT", "MThlp9gArfRf75MMao2iH7Yr");
 
@@ -241,6 +249,7 @@ public class UserControllers {
         payment.setPaymentId(null);
         payment.setStatus("created");
         payment.setUser(this.userRepository.findByUser_email(principal.getName()));
+        payment.setTrip(trip);
         payment.setReceipt(order.get("receipt"));
 
         this.paymentRepository.save(payment);
@@ -263,5 +272,21 @@ public class UserControllers {
     }
 
 
+    @GetMapping("/user/userDashboardYourTravelPlans")
+    public String userDashboardYourTravelPlans(HttpSession session){
+
+        User user = (User) session.getAttribute("user");
+
+        List<Payment> paymentList = this.paymentRepository.findByUser_user_id(user.getUser_id(), "paid");
+
+        session.setAttribute("paymentList", paymentList);
+
+        // for(Payment p: paymentList){
+        //     System.out.println(p.getTrip().getDescription());
+        // }
+       
+
+        return "userDashboardYourTravelPlans";
+    }
  
 }
