@@ -227,7 +227,7 @@ public class UserControllers {
         Trip trip = tripOptional.get();
 
 
-        var client = new RazorpayClient("rzp_test_gdTKt6nq4H7aFT", "MThlp9gArfRf75MMao2iH7Yr");
+        var client = new RazorpayClient("YOUR RAZORPAY KEY", "YOUR RAZORPAY SECRET");
 
         JSONObject orderRequest = new JSONObject();
         orderRequest.put("amount",amt*100);

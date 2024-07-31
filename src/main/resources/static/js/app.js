@@ -101,7 +101,7 @@ const paymentStart = (amt, tripId) => {
                     // open payment form
 
                     let options = {
-                        "key": "rzp_test_gdTKt6nq4H7aFT", // Enter the Key ID generated from the Dashboard
+                        "key": "YOUR RAZORPAY KEY", // Enter the Key ID generated from the Dashboard
                         "amount": response.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         "currency": "INR",
                         "name": "Travel-Planner", //your business name
