@@ -316,80 +316,8 @@
     <!-- Sweet alert CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Script for edit profile -->
-    <script type="text/javascript">
-		$(document).ready(function() {
-			let editStatus = false;
-			$("#edit-profile").click(function() {
-
-				if (editStatus == false) {
-					$("#showProfile").hide();
-					$("#editProfile").show();
-
-					editStatus = true;
-
-					$(this).text("Back");
-				} else {
-					$("#showProfile").show();
-					$("#editProfile").hide();
-
-					editStatus = false;
-
-					$(this).text("Edit");
-				}
-			})
-		});
-
-
-        // Script for the drop down menu
-        $('.dropdown-submenu a.dropdown-toggle').on("click", function(e) {
-            var $subMenu = $(this).next(".dropdown-menu");
-            if (!$subMenu.hasClass('show')) {
-                $subMenu.parents('.dropdown-menu').first().find('.show').removeClass("show");
-            }
-            $subMenu.toggleClass('show');
-            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-                $('.dropdown-submenu .show').removeClass("show");
-            });
-            return false;
-        });
-
-		
-        // for sweet alert
-        function deleteUser(uid){
-
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch('/user/delete/' + uid, {
-                        method: 'DELETE',
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            Swal.fire("Deleted!", "Your account has been deleted.", "success").then(() => {
-                                // Redirect to a suitable page after deletion
-                                window.location = '/home';
-                            });
-                        } else {
-                            Swal.fire("Error!", "There was a problem deleting your account.", "error");
-                        }
-                    })
-                    .catch(error => {
-                        Swal.fire("Error!", "There was a problem deleting your account.", "error");
-                    });
-                } else {
-                    Swal.fire("Cancelled", "Your profile is safe.", "info");
-                }
-            });
-        }
-	</script>
+    <!-- Our script app.js -->
+    <script src="<%= request.getContextPath() %>/js/app.js"></script>
     
 </body>
 </html>
