@@ -58,10 +58,10 @@
             </ul>
 
             <form action="/login" class="d-flex">
-              <button class="btn btn-outline-light mx-2" type="submit">Login</button>
+              <button class="btn btn-outline-light mx-2" type="submit">Sign In</button>
             </form>
             <form action="/userRegistration" class="d-flex">
-              <button class="btn btn-outline-light mx-2" type="submit">Register</button>
+              <button class="btn btn-outline-light mx-2" type="submit">Sign Up</button>
             </form>
 
           </div>
@@ -95,7 +95,7 @@
           <p class="lead fw-bold mx-auto">You can trust us with your vacation</p>
           <div class="d-sm-flex justify-content-sm-center">
             <form action="/userRegistration" class="d-flex">
-              <button class="btn btn-outline-dark mx-2" type="submit">Explore Now</button>
+              <button class="btn btn-dark mx-2" type="submit">Explore Now</button>
             </form>
           </div>
         </div>

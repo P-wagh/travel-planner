@@ -15,58 +15,7 @@
 <meta charset="ISO-8859-1">
 <title>Travel planner User Dashboard</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-
-<style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .sidebar {
-            height: 100vh;
-            background-color: #343a40;
-            padding-top: 1rem;
-        }
-        .sidebar a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .sidebar a:hover {
-            color: #ffc107;
-        }
-        .active{
-            color: #ffc107 !important;
-        }
-        .content {
-            padding: 2rem;
-        }
-        .user-info {
-            background-color: #fff;
-            padding: 1rem;
-            border-radius: .25rem;
-            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
-        }
-        .card {
-            margin-bottom: 1.5rem;
-        }
-
-        /* For profile ficture to cover all space in div */
-        .profilepicture{
-            object-fit: cover;
-        }
-
-        /* For drop down */
-        .dropdown-submenu {
-        position: relative;
-        }
-        .dropdown-submenu .dropdown-menu {
-            top: 0;
-            left: -100%;
-            margin-top: 0;
-            margin-left: 0;
-        }
-    </style>
-
-
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/styleForUserDashboard.css ">
 </head>
 <body>
 
@@ -338,7 +287,7 @@
 
                         <div class="card">
                             <a class="card-body" href="/user/userDashboardYourTravelPlans" style="text-decoration: none;">
-                                <h5 class="card-title">Your Recent Travel Plans</h5>
+                                <h5 class="card-title">Your Travel Plans</h5>
                                 <p class="card-text">You have no recent travel plans.</p>
                             </a>
                         </div>

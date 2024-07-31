@@ -10,6 +10,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css ">
 <style>
     .mt-5{
         margin-top: 10% !important;
@@ -71,7 +72,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link active" aria-current="page" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Pricing</a>
