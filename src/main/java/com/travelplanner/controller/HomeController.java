@@ -12,6 +12,7 @@ import com.travelplanner.helper.Massege;
 import com.travelplanner.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
@@ -50,6 +51,12 @@ public class HomeController {
         }
 
     }
+
+    @GetMapping("/gallary")
+    public String showGallary() {
+        return "gallary";
+    }
+    
 
   
 }

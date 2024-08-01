@@ -43,7 +43,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="/gallary">Gallary</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Activity</a>
@@ -95,7 +95,8 @@
           <p class="lead fw-bold mx-auto">You can trust us with your vacation</p>
           <div class="d-sm-flex justify-content-sm-center">
             <form action="/userRegistration" class="d-flex">
-              <button class="btn btn-dark mx-2" type="submit">Explore Now</button>
+              <button class="btn btn-
+              dark mx-2" type="submit">Explore Now</button>
             </form>
           </div>
         </div>
