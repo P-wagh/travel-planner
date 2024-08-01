@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.travelplanner.entity.Admin;
+import com.travelplanner.entity.TripImages;
 import com.travelplanner.helper.Massege;
 import com.travelplanner.repository.AdminRepository;
+import com.travelplanner.repository.TripImagesRepository;
 import com.travelplanner.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +29,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private TripImagesRepository tripImagesRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -50,6 +55,9 @@ public class AdminController {
         String adminEmail = this.adminRepository.getAdminEmail();
         System.out.println(adminEmail);
         System.out.println(username);
+
+        int countOfImages = (int) tripImagesRepository.count();
+        session.setAttribute("countOfImages", countOfImages);
 
         if (username.equals(adminEmail)) {
             if (password.equals(adminRepository.getAdminPassword())) {
@@ -116,6 +124,32 @@ public class AdminController {
     @GetMapping("/admin/postRedirect")
     public String postRedirect() {
     return "postRedirect"; 
+    }
+    
+
+    @PostMapping("/admin/addImage")
+    public String addTripImages(@ModelAttribute("TripImages") TripImages tripImages, @RequestParam("imageFile") MultipartFile file, HttpSession session) {
+        
+        try {
+            
+            File savFile = new ClassPathResource("/static/images/tripImages").getFile();
+            Path path = Paths.get(savFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+
+            tripImages.setOriginalName(file.getOriginalFilename());
+
+            tripImagesRepository.save(tripImages);
+
+            session.setAttribute("msg", new Massege("Tip image uploaded Successfully.", "success"));
+
+            return "redirect:/admin/postRedirect";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.setAttribute("msg", new Massege("error image is not uploaded.!!", "danger"));
+
+            return "redirect:/admin/postRedirect";
+        }
     }
     
 }

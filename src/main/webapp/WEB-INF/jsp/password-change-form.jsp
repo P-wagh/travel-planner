@@ -63,20 +63,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Activity</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/gallary">Gallary</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/activity">Activity</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/about">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact Us</a>
+                      </li>
                 </ul>
                 <form action="/login" class="d-flex">
                     <button class="btn btn-outline-light mx-2" type="submit">Login</button>
