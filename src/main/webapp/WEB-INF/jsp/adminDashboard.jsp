@@ -7,6 +7,7 @@
 	Admin admin = (Admin) session.getAttribute("admin");
     Massege msg = (Massege) session.getAttribute("msg");
     int userCount = (int) session.getAttribute("userCount");
+    int countOfImages = (int) session.getAttribute("countOfImages");
 
 %>
 <!DOCTYPE html>
@@ -255,6 +256,70 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- model for addImage -->                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="addImages" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Travel Planner</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="container">
+                                    <h2>Add Image</h2>
+                                    <form action="/admin/addImage" method="post" enctype="multipart/form-data">
+                                        <div class="form-group mb-2">
+                                            <label for="imageName" class="mb-2">Image Name</label>
+                                            <input type="text" class="form-control" id="imageName" name="imageName" placeholder="Enter image name" required>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="imageType" class="mb-2">Image Type</label>
+                                            <input type="text" class="form-control" id="imageType" name="type" placeholder="Enter image Type" required>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="imageDescription" class="mb-2">Image Description</label>
+                                            <textarea class="form-control" id="imageDescription" name="discription" rows="3" placeholder="Enter image description" required></textarea>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="imageFile" class="mb-2">Upload Image</label>
+                                            <input type="file" class="form-control-file" id="imageFile" name="imageFile" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-dark mb-2 mx-2">Submit</button>
+                                        <button type="reset" class="btn btn-outline-dark mb-2 mx-2">Reset</button>
+
+                                    </form>
+                                </div>
+                            
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div> 
+                    <!-- model end -->
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total images</h5>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Number of travel images: <%= countOfImages %></p>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addImages">
+                                        Add New Trip Image
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="row">

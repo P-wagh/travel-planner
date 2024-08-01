@@ -274,6 +274,9 @@
                         <!-- <a href="/user/addTrip" class="btn btn-primary">Add New Trip</a>
                         <a href="/user/viewTrips" class="btn btn-secondary">View Past Trips</a>
                         <a href="/user/preferences" class="btn btn-info">Update Preferences</a> -->
+
+                      <a class="btn btn-dark" href="https://www.buildai.space/app/trip-planner-ai">Click here to plane your trip</a>
+
                     </div>
                 </div>
 

@@ -1,5 +1,7 @@
 package com.travelplanner.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.travelplanner.entity.TripImages;
 import com.travelplanner.entity.User;
 import com.travelplanner.helper.Massege;
+import com.travelplanner.repository.TripImagesRepository;
 import com.travelplanner.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,6 +20,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private TripImagesRepository tripImagesRepository;
 
     @Autowired
     private UserService userService;
@@ -53,10 +60,27 @@ public class HomeController {
     }
 
     @GetMapping("/gallary")
-    public String showGallary() {
+    public String showGallary(HttpSession session) {
+        List<TripImages> tripImagesList = tripImagesRepository.findAll();
+        session.setAttribute("tripImageList", tripImagesList);
+    
         return "gallary";
     }
     
+    @GetMapping("/about")
+    public String showAboutPage() {
+        return "about";
+    }
 
+    @GetMapping("/contact")
+    public String showContactPage() {
+        return "contactus";
+    }
+
+    @GetMapping("/activity")
+    public String showActivityPage() {
+        return "activity";
+    }
+    
   
 }

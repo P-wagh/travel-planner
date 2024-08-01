@@ -52,16 +52,16 @@
                         <a class="nav-link text-white" aria-current="page" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Pricing</a>
+                        <a class="nav-link text-white" href="/gallary">Gallary</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Activity</a>
+                        <a class="nav-link text-white" href="/activity">Activity</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">About Us</a>
+                        <a class="nav-link text-white" href="/about">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contact Us</a>
+                        <a class="nav-link text-white" href="/contact">Contact Us</a>
                     </li>
 
                 </ul>
