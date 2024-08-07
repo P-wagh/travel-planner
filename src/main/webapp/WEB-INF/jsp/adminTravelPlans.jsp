@@ -120,7 +120,7 @@
                                     alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
                             <ul class="dropdown-menu text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
 
                                 <!-- Dropdown submenu -->
                                 <div class="dropdown-submenu dropstart">
@@ -272,7 +272,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">User list</h5>
+                                        <h5 class="card-title">Trip list</h5>
 
                                         <table class="table">
                                             <thead>

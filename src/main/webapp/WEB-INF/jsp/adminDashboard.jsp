@@ -7,6 +7,7 @@
 	Admin admin = (Admin) session.getAttribute("admin");
     Massege msg = (Massege) session.getAttribute("msg");
     int userCount = (int) session.getAttribute("userCount");
+    int tripCount = (int) session.getAttribute("tripCount");
     int countOfImages = (int) session.getAttribute("countOfImages");
 
 %>
@@ -105,7 +106,7 @@
                               <img style="object-fit: cover;" src="<%= request.getContextPath() %>/images/profiles/<%= admin.getAdminPhoto() %>" alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
                             <ul class="dropdown-menu text-small shadow">
-                              <li><a class="dropdown-item" href="#">New project...</a></li>
+                              <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
                               
                               <!-- Dropdown submenu -->
                               <div class="dropdown-submenu dropstart">
@@ -250,7 +251,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Total Travel Plans</h5>
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-text">Number of travel plans created: 75</p>
+                                    <p class="card-text">Number of travel plans created: <%= tripCount %></p>
                                     <a href="/admin/addTripForm" class="btn btn-outline-dark">Add New Trip Plan</a>
                                 </div>
                             </div>

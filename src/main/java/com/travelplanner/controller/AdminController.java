@@ -59,6 +59,9 @@ public class AdminController {
         int userCount = (int) userRepository.count();
         session.setAttribute("userCount", userCount);
 
+        int tripCount = (int) this.tripRepository.count();
+        session.setAttribute("tripCount", tripCount);
+
         String adminEmail = this.adminRepository.getAdminEmail();
         System.out.println(adminEmail);
         System.out.println(username);
