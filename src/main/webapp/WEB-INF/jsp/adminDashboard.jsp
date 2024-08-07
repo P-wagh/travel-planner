@@ -7,6 +7,7 @@
 	Admin admin = (Admin) session.getAttribute("admin");
     Massege msg = (Massege) session.getAttribute("msg");
     int userCount = (int) session.getAttribute("userCount");
+    int tripCount = (int) session.getAttribute("tripCount");
     int countOfImages = (int) session.getAttribute("countOfImages");
 
 %>
@@ -66,30 +67,30 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/adminShowUsers">
                                 Users
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/adminTravelPlans">
                                 Travel Plans
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Suggestions
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Settings
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Add New Trip
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -105,7 +106,7 @@
                               <img style="object-fit: cover;" src="<%= request.getContextPath() %>/images/profiles/<%= admin.getAdminPhoto() %>" alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
                             <ul class="dropdown-menu text-small shadow">
-                              <li><a class="dropdown-item" href="#">New project...</a></li>
+                              <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
                               
                               <!-- Dropdown submenu -->
                               <div class="dropdown-submenu dropstart">
@@ -240,7 +241,7 @@
                                 <h5 class="card-title">Total Users &nbsp; <i class="fa-solid fa-user"></i></h5>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text">Number of registered users: <%= userCount %></p>
-                                    <a href="#" class="btn btn-outline-dark">Refresh</a>
+                                    <a href="/admin/postRedirect" class="btn btn-outline-dark">Refresh</a>
                                 </div>
                             </div>
                         </div>
@@ -250,7 +251,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Total Travel Plans</h5>
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-text">Number of travel plans created: 75</p>
+                                    <p class="card-text">Number of travel plans created: <%= tripCount %></p>
                                     <a href="/admin/addTripForm" class="btn btn-outline-dark">Add New Trip Plan</a>
                                 </div>
                             </div>
@@ -322,7 +323,7 @@
 
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -360,9 +361,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -372,7 +373,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+
+
             </main>
         </div>
     </div>

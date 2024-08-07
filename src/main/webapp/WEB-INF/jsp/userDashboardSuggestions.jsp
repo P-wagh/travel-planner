@@ -52,11 +52,11 @@
                                 Suggestions
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Settings
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -74,7 +74,7 @@
                                     alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
                             <ul class="dropdown-menu text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
 
                                 <!-- Dropdown submenu -->
                                 <div class="dropdown-submenu dropstart">
@@ -319,7 +319,7 @@
                                 <p class="card-text">Check out these amazing travel destinations and
                                     hotels that suit your interests.</p>
 
-                                <div class="d-flex d-flex flex-wrap">
+                                <div class="d-flex flex-wrap">
                                     <% if(alltrip !=null){ for(Trip trip : alltrip){ %>
                                         <div class="col-md-4 mx-2">
                                             <div class="card">

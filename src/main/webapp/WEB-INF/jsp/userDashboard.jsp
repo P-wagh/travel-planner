@@ -49,11 +49,11 @@
                                 Suggestions
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Settings
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -69,7 +69,7 @@
                               <img src="<%= request.getContextPath() %>/images/profiles/<%= user.getUser_photo() %>" alt="mdo" width="35px" height="35px" class="rounded-circle profilepicture">
                             </a>
                             <ul class="dropdown-menu text-small shadow">
-                              <li><a class="dropdown-item" href="#">New project...</a></li>
+                              <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
                               
                               <!-- Dropdown submenu -->
                               <div class="dropdown-submenu dropstart">
