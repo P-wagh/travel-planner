@@ -145,10 +145,10 @@
                   <label for="user_password">Password</label>
                   <input type="password" class="form-control" id="user_password" name="user_password" required>
                 </div>
-                <div class="form-group my-3">
+                <!-- <div class="form-group my-3">
                   <label for="confirm_password">Confirm Password</label>
                   <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-outline-dark btn-block">Sign Up</button>
                 <Button type="reset" class="btn btn-outline-dark ms-1">Reset</Button>
               </form>
@@ -166,12 +166,11 @@
   <!-- Footer start -->
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Activity</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About Us</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+      <li class="nav-item"><a href="/home" class="nav-link px-2 text-body-secondary">Home</a></li>
+      <li class="nav-item"><a href="/gallary" class="nav-link px-2 text-body-secondary">Gallary</a></li>
+      <li class="nav-item"><a href="/activity" class="nav-link px-2 text-body-secondary">Activity</a></li>
+      <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">About Us</a></li>
+      <li class="nav-item"><a href="/contact" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
     </ul>
     <p class="text-center text-body-secondary">© 2024 Travel-Planner</p>
   </footer>
