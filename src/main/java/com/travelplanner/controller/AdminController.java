@@ -140,7 +140,7 @@ public class AdminController {
 
             tripImagesRepository.save(tripImages);
 
-            session.setAttribute("msg", new Massege("Tip image uploaded Successfully.", "success"));
+            session.setAttribute("msg", new Massege("Trip image uploaded Successfully.", "success"));
 
             return "redirect:/admin/postRedirect";
 

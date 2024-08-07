@@ -240,7 +240,7 @@
                                 <h5 class="card-title">Total Users &nbsp; <i class="fa-solid fa-user"></i></h5>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text">Number of registered users: <%= userCount %></p>
-                                    <a href="#" class="btn btn-outline-dark">Refresh</a>
+                                    <a href="/admin/postRedirect" class="btn btn-outline-dark">Refresh</a>
                                 </div>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
 
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -360,9 +360,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -372,7 +372,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+
+                
             </main>
         </div>
     </div>
