@@ -66,30 +66,30 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/adminShowUsers">
                                 Users
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/adminTravelPlans">
                                 Travel Plans
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Suggestions
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Settings
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 Add New Trip
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -374,7 +374,7 @@
                     </div>
                 </div> -->
 
-                
+
             </main>
         </div>
     </div>

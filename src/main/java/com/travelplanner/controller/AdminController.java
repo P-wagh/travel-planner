@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.travelplanner.entity.Admin;
+import com.travelplanner.entity.Trip;
 import com.travelplanner.entity.TripImages;
+import com.travelplanner.entity.User;
 import com.travelplanner.helper.Massege;
 import com.travelplanner.repository.AdminRepository;
 import com.travelplanner.repository.TripImagesRepository;
+import com.travelplanner.repository.TripRepository;
 import com.travelplanner.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +33,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private TripRepository tripRepository;
 
     @Autowired
     private TripImagesRepository tripImagesRepository;
@@ -151,5 +158,24 @@ public class AdminController {
             return "redirect:/admin/postRedirect";
         }
     }
+
+    @GetMapping("/admin/adminShowUsers")
+    public String showUsers(HttpSession session) {
+
+        List<User> userList = (List<User>) this.userRepository.findAll();
+        session.setAttribute("userList", userList);
+
+        return "adminUserInfo";
+    }
+
+    @GetMapping("/admin/adminTravelPlans")
+    public String showTravelPlans(HttpSession session) {
+
+        List<Trip> tripList = (List<Trip>) this.tripRepository.findAll();
+        session.setAttribute("tripList", tripList);
+
+        return "adminTravelPlans";
+    }
+    
     
 }

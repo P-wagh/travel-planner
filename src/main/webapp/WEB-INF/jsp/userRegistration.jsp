@@ -110,7 +110,7 @@
             <% session.removeAttribute("msg"); } %>
 
 
-              <h2 class="text-center my-4">User Registration</h2>
+              <h2 class="text-center my-4">Sign Up Form</h2>
               <!-- <p class="text-center">Home for the traveller</p> -->
               <form action="/do_register" method="post">
                 <div class="form-group my-2">
