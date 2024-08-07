@@ -319,7 +319,7 @@
                                 <p class="card-text">Check out these amazing travel destinations and
                                     hotels that suit your interests.</p>
 
-                                <div class="d-flex d-flex flex-wrap">
+                                <div class="d-flex flex-wrap">
                                     <% if(alltrip !=null){ for(Trip trip : alltrip){ %>
                                         <div class="col-md-4 mx-2">
                                             <div class="card">

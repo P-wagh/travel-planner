@@ -319,7 +319,7 @@
                                 <h5 class="card-title">Your Travel Plans</h5>
                                 <p class="card-text">You have no recent travel plans.</p>
 
-                                <div class="d-flex mt-5">
+                                <div class="d-flex mt-5 flex-wrap">
                                     <% if(useralltrip !=null){ 
                                     	for(Payment usertrip : useralltrip){ 
                                     %>
