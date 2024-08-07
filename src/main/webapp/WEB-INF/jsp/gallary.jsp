@@ -70,9 +70,68 @@
 
 
   <div class="slider">
+    
 
 
     <div class="list">
+
+
+
+
+      <div class="item">
+        <img src="<%= request.getContextPath() %>/images/tripImages/img1.jpg" alt="">
+
+        <div class="content">
+            <div class="title">Travel-Planner</div>
+            <div class="type">FLOWER</div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="<%= request.getContextPath() %>/images/tripImages/img2.jpg" alt="">
+
+        <div class="content">
+            <div class="title">Travel Planner</div>
+            <div class="type">NATURE</div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="<%= request.getContextPath() %>/images/tripImages/img4.jpg" alt="">
+
+        <div class="content">
+            <div class="title">travel Planner</div>
+            <div class="type">PLANT</div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="<%= request.getContextPath() %>/images/tripImages/img3.jpg" alt="">
+
+        <div class="content">
+            <div class="title">travel planner</div>
+            <div class="type">NATURE</div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti temporibus quis eum consequuntur voluptate quae doloribus distinctio. Possimus, sed recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut.
+            </div>
+            
+        </div>
+    </div>
+
+
+
 
       <% for(TripImages tripImages : allTripImagesList){ %>
 
@@ -101,6 +160,24 @@
 
     <!-- thumbnail section -->
     <div class="thumbnail">
+
+
+
+      <div class="item">
+          <img src="<%= request.getContextPath() %>/images/tripImages/img1.jpg" alt="">
+      </div>
+      <div class="item">
+          <img src="<%= request.getContextPath() %>/images/tripImages/img2.jpg" alt="">
+      </div>
+      <div class="item">
+          <img src="<%= request.getContextPath() %>/images/tripImages/img4.jpg" alt="">
+      </div>
+      <div class="item">
+          <img src="<%= request.getContextPath() %>/images/tripImages/img3.jpg" alt="">
+      </div>
+
+
+
       <% for(TripImages tripImages : allTripImagesList){ %>
         <div class="item">
           <img src="<%= request.getContextPath() %>/images/tripImages/<%= tripImages.getOriginalName() %>" alt="">
