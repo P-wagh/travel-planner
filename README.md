@@ -63,4 +63,5 @@ Also in the app.js file.
 6. Admin Dashboard
 ![adminDahsboard](https://github.com/user-attachments/assets/2cfb1837-2f55-48ce-af12-095d3e876b66)
 
-
+7. Payment Gateway Integration
+![PaymentGatway integration](https://github.com/user-attachments/assets/e9667b6b-679d-46c1-9f44-a51bd975bf6d)
